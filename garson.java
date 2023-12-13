@@ -18,4 +18,9 @@ public class garson implements Runnable {
     public void siparisAl(){
                 
     }
+
+    @Override
+    public void run(){
+        
+    }
 }
