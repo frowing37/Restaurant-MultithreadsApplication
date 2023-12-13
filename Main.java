@@ -2,13 +2,15 @@ import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args){
         
         //Baslangic değerlerinin girilmesi
-        restoran r = new restoran(2, 6, 3, 0);
+        restoran r = new restoran(2, 6, 3, 10,4);
+        Random random = new Random();
 
         //Kullanılıcak nesnelerin oluşturulması
         ArrayList<musteri> musteriler = new ArrayList<musteri>();
@@ -30,17 +32,31 @@ public class Main {
             if(ref < r.getmasaSayi()){
                 masalar.add(new masa("Masa"+ref));
             }
-            if(ref>10){
+            if(ref > 10){
+                ref = 0;
                 break;
             }
             ref++;
         }
         kasaelemani kasaElemani = new kasaelemani("KasaElemanı1");
 
+        //Öncelikli olan müşterilerin rastgele atanması
+        while(true){
+            if(ref <= r.getOncelikliSayi()){
+                int rand = random.nextInt(10);
+                musteriler.get(rand).oncelikliyap();
+            }
+            else{
+                ref = 0;
+                break;
+            }
+        }
+
         //Kullanılıcak threadlerin oluşturulması
         ArrayList<Thread> musterilerT = new ArrayList<Thread>();
         ArrayList<Thread> ascilarT = new ArrayList<Thread>();
         ArrayList<Thread> garsonlarT = new ArrayList<Thread>();
+        ArrayList<Thread> main = new ArrayList<Thread>();
 
         for(int i=0; i< r.getmusteriSayi(); i++){
             musterilerT.add(new Thread(musteriler.get(i)));
@@ -55,6 +71,13 @@ public class Main {
         }
         Thread kasaElemaniT1 = new Thread(kasaElemani);
 
+        //Toplu başlatmak için threadleri bir listeye topladık
+        main.addAll(musterilerT);
+        main.addAll(ascilarT);
+        main.addAll(garsonlarT);
+        main.add(kasaElemaniT1);
+
+        r.startAll(main);
 
     }
 }

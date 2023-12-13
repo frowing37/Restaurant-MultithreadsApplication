@@ -5,6 +5,7 @@ public class asci implements Runnable {
 
     public asci(String name){
         this.name = name;
+        System.out.println(name + " oluşturuldu !");
     }
 
     @Override

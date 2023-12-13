@@ -2,17 +2,27 @@ public class musteri implements Runnable {
     
     public musteri(String name){
         this.name = name;
+        System.out.println(name + " oluşturuldu !");
     }
 
     private String name;
     private boolean siparis = false;
     private masa masa;
+    private boolean oncelik = false;
     private boolean hesapDurum = false;
     private int siraBeklemeSuresi = 0;
     private int maxsiraBeklemeSuresi = 20;
 
     public String getName(){
         return this.name;
+    }
+
+    public void oncelikliyap(){
+        this.oncelik = true;
+    }
+
+    public boolean onceliklimi(){
+        return this.oncelik;
     }
 
     public void restoranaGir(){
