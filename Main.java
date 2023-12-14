@@ -12,25 +12,19 @@ public class Main {
         restoran r = new restoran(2, 6, 3, 10,4);
         Random random = new Random();
 
-        //Kullanılıcak nesnelerin oluşturulması
-        ArrayList<musteri> musteriler = new ArrayList<musteri>();
-        ArrayList<asci> ascilar = new ArrayList<asci>();
-        ArrayList<garson> garsonlar = new ArrayList<garson>();
-        ArrayList<masa> masalar = new ArrayList<masa>();
-
         int ref = 0;
         while(true){
             if(ref < r.getasciSayi()){
-                ascilar.add(new asci("Aşçı"+ref));
+                r.ascilar.add(new asci("Aşçı"+ref));
             }
             if(ref < r.getmusteriSayi()){
-                musteriler.add(new musteri("Müşteri"+ref));
+                r.musteriler.add(new musteri("Müşteri"+ref,r));
             }
             if(ref < r.getgarsonSayi()){
-                garsonlar.add(new garson("Garson"+ref));
+                r.garsonlar.add(new garson("Garson"+ref));
             }
             if(ref < r.getmasaSayi()){
-                masalar.add(new masa("Masa"+ref));
+                r.masalar.add(new masa("Masa"+ref));
             }
             if(ref > 10){
                 ref = 0;
@@ -44,7 +38,7 @@ public class Main {
         while(true){
             if(ref <= r.getOncelikliSayi()){
                 int rand = random.nextInt(10);
-                musteriler.get(rand).oncelikliyap();
+                r.musteriler.get(rand).oncelikliyap();
             }
             else{
                 ref = 0;
@@ -59,15 +53,15 @@ public class Main {
         ArrayList<Thread> main = new ArrayList<Thread>();
 
         for(int i=0; i< r.getmusteriSayi(); i++){
-            musterilerT.add(new Thread(musteriler.get(i)));
+            musterilerT.add(new Thread(r.musteriler.get(i)));
         }
 
         for(int i=0; i< r.getgarsonSayi(); i++){
-            garsonlarT.add(new Thread(garsonlar.get(i)));
+            garsonlarT.add(new Thread(r.garsonlar.get(i)));
         }
 
         for(int i=0; i< r.getasciSayi(); i++){
-            ascilarT.add(new Thread(ascilar.get(i)));
+            ascilarT.add(new Thread(r.ascilar.get(i)));
         }
         Thread kasaElemaniT1 = new Thread(kasaElemani);
 

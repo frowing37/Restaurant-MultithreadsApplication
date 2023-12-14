@@ -2,7 +2,7 @@ public class garson implements Runnable {
     
     public garson(String name){
         this.name = name;
-        System.out.println(name + " oluşturuldu !");
+        System.out.println(name + " oluşturuldu !\n");
     }
 
     public String getName(){
@@ -16,8 +16,18 @@ public class garson implements Runnable {
         musteri = true;
     }
 
-    public void siparisAl(){
-                
+    public void siparisAl(musteri musteri){
+        try{
+            Thread.sleep(2000);
+            musteri.setSiparis();
+        }
+        catch(Exception e){
+
+        }
+    }
+
+    public void asciyaVer(asci asci){
+        asci.artirAktifYemek();
     }
 
     @Override

@@ -9,6 +9,10 @@ public class masa {
         this.name = name;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
     public boolean uygunmu(){
         return uygun;
     }
