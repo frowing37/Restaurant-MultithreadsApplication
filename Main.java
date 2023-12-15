@@ -18,10 +18,10 @@ public class Main {
                 r.ascilar.add(new asci("Aşçı"+ref));
             }
             if(ref < r.getmusteriSayi()){
-                r.musteriler.add(new musteri("Müşteri"+ref,r));
+                r.musteriler.add(new musteri("Müşteri"+ref, r));
             }
             if(ref < r.getgarsonSayi()){
-                r.garsonlar.add(new garson("Garson"+ref));
+                r.garsonlar.add(new garson("Garson"+ref, r));
             }
             if(ref < r.getmasaSayi()){
                 r.masalar.add(new masa("Masa"+ref));

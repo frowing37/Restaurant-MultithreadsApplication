@@ -3,8 +3,6 @@ import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.xml.sax.HandlerBase;
-
 public class musteri implements Runnable {
     
     Random rand = new Random();
@@ -24,6 +22,7 @@ public class musteri implements Runnable {
     private boolean oncelik = false;
     private boolean hesapDurum = false;
     private boolean yemek = false;
+    private boolean garsonAtaması = false;
     private int siraBeklemeSuresi = 0;
     private int maxsiraBeklemeSuresi = 20;
 
@@ -35,7 +34,15 @@ public class musteri implements Runnable {
         return this.ID;
     }
 
-    public void setSiparis(){
+    public boolean garsonAtalımı(){
+        return this.garsonAtaması;
+    }
+
+    public void garsonAtama() {
+        this.garsonAtaması = true;
+    }
+
+    public void setSiparis() {
         this.siparis = true;
     }
 
@@ -86,16 +93,19 @@ public class musteri implements Runnable {
 
     public void restorandanCik(){
         this.masa.bosalt();
+        System.out.println(name + " restorandan çıktı");
     }
 
     public boolean restoraniTerket(){
         r.siradanCikart(this);
+        System.out.println(name + " restoranı terk etti");
         return false;
     }
 
     public void yeUlan(){
         try{
             this.yemek = true;
+            System.out.println(name + " yemeğini yedi");
             Thread.sleep(2000);
             r.hesapSirasinaGir(this);
         }
@@ -109,6 +119,7 @@ public class musteri implements Runnable {
             try{
                 Thread.sleep(1000);
                 //this.hesapDurum = true; BU DEĞERİ KASA ELEMANI DEĞİŞTİRİCEK 
+                System.out.println(name + " hesabını ödedi");
                 r.hesapSirasindanCik(this);
                 return true;
             }
