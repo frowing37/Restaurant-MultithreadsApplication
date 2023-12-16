@@ -8,14 +8,21 @@ public class yemek extends Thread {
         this.g = g;
     }
 
+    public asci getAsci() {
+        return this.a;
+    }
+
+    public garson getGarson() {
+        return this.g;
+    }
+
     @Override
-    public void run(){
+    public void run() {
         try{
             Thread.sleep(3000);
         }
         catch(Exception e){
 
         }
-
     }
 }

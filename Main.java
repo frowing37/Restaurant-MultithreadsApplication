@@ -1,7 +1,4 @@
-import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Main {
@@ -32,7 +29,6 @@ public class Main {
             }
             ref++;
         }
-        kasaelemani kasaElemani = new kasaelemani("KasaElemanı1");
 
         //Öncelikli olan müşterilerin rastgele atanması
         while(true){
@@ -63,7 +59,7 @@ public class Main {
         for(int i=0; i< r.getasciSayi(); i++){
             ascilarT.add(new Thread(r.ascilar.get(i)));
         }
-        Thread kasaElemaniT1 = new Thread(kasaElemani);
+        Thread kasaElemaniT1 = new Thread(r.kasaElemani);
 
         //Toplu başlatmak için threadleri bir listeye topladık
         main.addAll(musterilerT);

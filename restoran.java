@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -17,6 +16,7 @@ public class restoran {
     public static ArrayList<asci> ascilar = new ArrayList<asci>();
     public static ArrayList<garson> garsonlar = new ArrayList<garson>();
     public static ArrayList<masa> masalar = new ArrayList<masa>();
+    public kasaelemani kasaElemani = new kasaelemani("KasaElemanı1",this);
 
     public restoran(int asciSayi,int masaSayi,int garsonSayi,int musteriSayi,int oncelikliMusteriSayisi){
         this.asciSayi = asciSayi;

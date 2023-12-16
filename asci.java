@@ -1,4 +1,3 @@
-import java.time.chrono.ThaiBuddhistChronology;
 import java.util.ArrayList;
 
 public class asci implements Runnable {
@@ -14,7 +13,7 @@ public class asci implements Runnable {
     }
 
     public boolean asciUygunmu() {
-        if(yemekler.size() < 2){
+        if(yemekler.size() < 2) {
             return true;
         }
         else{
@@ -37,13 +36,19 @@ public class asci implements Runnable {
         }
     }
 
-    public void yemekYap() {
-        
+    public void yemekYap(yemek yemek) {
+        yemek.run();
+        yemek.getGarson().siparisHAzır();
     }
 
     @Override
     public void run(){
-
+        if(y1 != null){
+            yemekYap(y1);
+        }
+        if(y2 != null){
+            yemekYap(y2);
+        }
     }
 
 }

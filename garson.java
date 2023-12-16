@@ -1,6 +1,6 @@
 public class garson implements Runnable {
     
-    public garson(String name,restoran r){
+    public garson(String name,restoran r) {
         this.name = name;
         this.r = r;
         System.out.println(name + " oluşturuldu !\n");
@@ -16,7 +16,7 @@ public class garson implements Runnable {
     private musteri _musteri;
     private restoran r;
 
-    public void servisYap() {
+    public void siparisHAzır() {
         this.siparisHazır = true;
     }
 
@@ -49,17 +49,16 @@ public class garson implements Runnable {
         }
     }
 
-    public bool siparisHazırmı(){
-        
+    public boolean siparisHazırmı(){
+        return this.siparisHazır;
     }
 
     @Override
     public void run(){
-
-        boolean sart = true;
+        
         int sira = 0;
 
-        while(sart){
+        while(true){
             switch(sira){
                 case 0:
                 if(musteriyiKap(_musteri)){
@@ -77,6 +76,22 @@ public class garson implements Runnable {
                 break;
 
                 case 3:
+                if(siparisHazırmı()) {
+                    sira++;
+                }
+                break;
+
+                case 4:
+                _musteri.siparisSunum();
+                sira++;
+                break;
+
+                case 5:
+                if(_musteri.odedinMiLan()){
+                    _musteri = null;
+                    musteri = false;
+                    sira = 0;
+                }
                 break;
             }
         }

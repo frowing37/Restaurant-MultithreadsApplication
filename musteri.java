@@ -17,7 +17,8 @@ public class musteri implements Runnable {
     private String name;
     private int ID;
     private restoran r;
-    private boolean siparis = false;
+    private boolean siparisAlindi = false;
+    private boolean siparisHazır = false;
     private masa masa;
     private boolean oncelik = false;
     private boolean hesapDurum = false;
@@ -34,6 +35,14 @@ public class musteri implements Runnable {
         return this.ID;
     }
 
+    public void siparisSunum(){
+        this.siparisHazır = true;
+    }
+
+    public void sethesapDurum(){
+        this.hesapDurum = true;
+    }
+
     public boolean garsonAtalımı(){
         return this.garsonAtaması;
     }
@@ -43,7 +52,7 @@ public class musteri implements Runnable {
     }
 
     public void setSiparis() {
-        this.siparis = true;
+        this.siparisAlindi = true;
     }
 
     public void oncelikliyap(){
@@ -117,10 +126,7 @@ public class musteri implements Runnable {
     public boolean hesapOde(){
         if(r.hesapSiramNe(this) == 0){
             try{
-                Thread.sleep(1000);
-                //this.hesapDurum = true; BU DEĞERİ KASA ELEMANI DEĞİŞTİRİCEK 
-                System.out.println(name + " hesabını ödedi");
-                r.hesapSirasindanCik(this);
+                r.kasaElemani.hesapAl(this);
                 return true;
             }
             catch(Exception e){
@@ -128,6 +134,10 @@ public class musteri implements Runnable {
             }
         }
         return false;
+    }
+
+    public boolean odedinMiLan(){
+        return this.hesapDurum;
     }
 
     @Override
@@ -154,7 +164,7 @@ public class musteri implements Runnable {
                 break;
 
                 case 2:
-                if(siparis){
+                if(this.siparisHazır) {
                     sira++;
                 }
                 break;
