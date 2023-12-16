@@ -4,7 +4,14 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args){
-        
+
+        TryFrame pencere = new TryFrame();
+        Document doküman = new Document();
+
+        pencere.AnaMenü();
+        doküman.yazdir("gardaş sakin la");
+
+
         //Baslangic değerlerinin girilmesi
         restoran r = new restoran(2, 6, 3, 10,4);
         Random random = new Random();
@@ -32,7 +39,7 @@ public class Main {
 
         //Öncelikli olan müşterilerin rastgele atanması
         while(true){
-            if(ref <= r.getOncelikliSayi()){
+            if(ref <= r.getOncelikliSayi()) {
                 int rand = random.nextInt(10);
                 r.musteriler.get(rand).oncelikliyap();
             }
