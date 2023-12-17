@@ -9,13 +9,13 @@ public class restoran {
     private int garsonSayi;
     private int musteriSayi;
     private int oncelikliMusteriSayisi;
-    private static ArrayList<musteri> siraListesi = new ArrayList<musteri>();
-    private static ArrayList<musteri> hesapSirasi = new ArrayList<musteri>();
+    private ArrayList<musteri> siraListesi = new ArrayList<musteri>();
+    private ArrayList<musteri> hesapSirasi = new ArrayList<musteri>();
 
-    public static ArrayList<musteri> musteriler = new ArrayList<musteri>();
-    public static ArrayList<asci> ascilar = new ArrayList<asci>();
-    public static ArrayList<garson> garsonlar = new ArrayList<garson>();
-    public static ArrayList<masa> masalar = new ArrayList<masa>();
+    public ArrayList<musteri> musteriler = new ArrayList<musteri>();
+    public ArrayList<asci> ascilar = new ArrayList<asci>();
+    public ArrayList<garson> garsonlar = new ArrayList<garson>();
+    public ArrayList<masa> masalar = new ArrayList<masa>();
     public kasaelemani kasaElemani = new kasaelemani("KasaElemanı1",this);
 
     public restoran(int asciSayi,int masaSayi,int garsonSayi,int musteriSayi,int oncelikliMusteriSayisi){

@@ -1,35 +1,59 @@
 import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class TryFrame extends JFrame {
 
-    public void AnaMenü(){
+    public void AnaMenu(){
+        JFrame mainFrame = new JFrame("Restoran Simülasyonu - Başlangıç");
+        mainFrame.setSize(500,500);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setResizable(false);
+        mainFrame.setLocationRelativeTo(null);
+
+        JPanel mainPanel = new JPanel();
+        mainPanel.setBackground(Color.YELLOW);
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+
+        JLabel usernameLabel = new JLabel("Username:");
+        JTextField usernameField = new JTextField();
+        mainPanel.add(usernameLabel);
+        mainPanel.add(usernameField);
+
+        JButton loginButton = new JButton("Login");
+        mainPanel.add(loginButton);
+        mainFrame.add(mainPanel);
+
+        mainFrame.setVisible(true);
+    }
+
+
+    public void RolMenusu() {
         // JFrame oluştur
-        JFrame frame = new JFrame("Restoran Simülasyonu");
+        JFrame frame = new JFrame("Restoran Simülasyonu - Rol Menüsü");
         frame.setSize(700, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
 
         // JPanel oluştur ve düzeni ayarla
         JPanel panel = new JPanel();
         panel.setBackground(Color.ORANGE);
-        panel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         // 5 adet buton oluştur
         JButton buttonA = new JButton("Aşçılar");
         JButton buttonG = new JButton("Garsonlar");
         JButton buttonK = new JButton("Kasa Elemanı");
         JButton buttonM = new JButton("Müşteriler");
-        buttonA.setBackground(Color.cyan);
-        buttonA.setSize(100, 60);
-        buttonG.setBackground(Color.cyan);
-        buttonG.setSize(100, 60);
-        buttonK.setBackground(Color.cyan);
-        buttonK.setSize(100, 60);
-        buttonM.setBackground(Color.cyan);
-        buttonM.setSize(100, 60);
+
+        Dimension buttonDimension = new Dimension(100,100);
+        buttonA.setSize(100,100);
 
         // Butonları panele ekle
         panel.add(buttonA);

@@ -8,7 +8,7 @@ public class Main {
         TryFrame pencere = new TryFrame();
         Document doküman = new Document();
 
-        pencere.AnaMenü();
+        pencere.AnaMenu();
         doküman.yazdir("gardaş sakin la");
 
 
