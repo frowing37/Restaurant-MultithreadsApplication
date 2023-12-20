@@ -8,6 +8,7 @@ public class kasaelemani implements Runnable {
 
     private String name;
     private restoran r;
+    private Document d;
 
     public void hesapAl(musteri musteri) {
         try{

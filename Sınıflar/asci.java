@@ -6,6 +6,7 @@ public class asci implements Runnable {
     private ArrayList<garson> yemekler = new ArrayList<garson>();
     private yemek y1 = null;
     private yemek y2 = null;
+    private Document d;
 
     public asci(String name) {
         this.name = name;

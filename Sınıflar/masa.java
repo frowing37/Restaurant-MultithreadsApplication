@@ -13,15 +13,15 @@ public class masa {
         return this.name;
     }
 
-    public boolean uygunmu(){
+    public synchronized boolean uygunmu(){
         return uygun;
     }
 
-    public void doldur(){
+    public synchronized void doldur(){
         this.uygun = false;
     }
 
-    public void bosalt(){
+    public synchronized void bosalt(){
         this.uygun = true;
     }
 }

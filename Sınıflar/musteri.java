@@ -3,11 +3,13 @@ import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.lang.model.util.ElementScanner14;
+
 public class musteri implements Runnable {
     
     Random rand = new Random();
 
-    public musteri(String name,restoran r){
+    public musteri(String name,restoran r) {
         this.name = name;
         this.r = r;
         this.ID = rand.nextInt(100000,1000000);
@@ -26,6 +28,7 @@ public class musteri implements Runnable {
     private boolean garsonAtaması = false;
     private int siraBeklemeSuresi = 0;
     private int maxsiraBeklemeSuresi = 20;
+    private Document d;
 
     public String getName(){
         return this.name;
@@ -33,6 +36,10 @@ public class musteri implements Runnable {
 
     public int getID(){
         return this.ID;
+    }
+
+    public masa getMasa(){
+        return this.masa;
     }
 
     public void siparisSunum(){
@@ -64,7 +71,7 @@ public class musteri implements Runnable {
     }
 
     public void restoranaGir(){
-        System.out.println(name+" Restorana girdi");
+        System.out.println(name + " Restorana girdi");
         r.sirayaEkle(this);
     }
 
@@ -73,6 +80,7 @@ public class musteri implements Runnable {
             for (masa m : r.masalar) {
                 if(m.uygunmu()){
                     masayaOtur(m);
+                    r.siradanCikart(this);
                     return true;
                 }
             }
@@ -86,6 +94,7 @@ public class musteri implements Runnable {
     public void siraBekle(){
         try{
             Thread.sleep(1000);
+            System.out.println(this.name + " " + r.siramNe(this)  + ". sırada bekliyor");
             siraBeklemeSuresi++;
         }
         catch(Exception e){
@@ -141,7 +150,7 @@ public class musteri implements Runnable {
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         int sira = 0;
         boolean sart = true;
         while(sart){
@@ -154,10 +163,12 @@ public class musteri implements Runnable {
                 case 1:
                 if(!bosMasa()){
                     siraBekle();
-                }
-                if(this.siraBeklemeSuresi == this.maxsiraBeklemeSuresi){
+
+                    if(this.siraBeklemeSuresi == this.maxsiraBeklemeSuresi) {
                     sart = restoraniTerket();
+                    }
                 }
+                 
                 else{
                     sira++;
                 }
@@ -166,6 +177,8 @@ public class musteri implements Runnable {
                 case 2:
                 if(this.siparisHazır) {
                     sira++;
+                } else {
+                    //System.out.println(this.name + " masada siparişini bekliyor");
                 }
                 break;
                 

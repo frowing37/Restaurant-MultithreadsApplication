@@ -6,9 +6,9 @@ import java.io.PrintWriter;
 
 public class Document {
     
-    public void yazdir(String icerik){
+    public void yazdir(String icerik,String dosyaAdi){
         try{
-        File file = new File("/Users/frowing/Projects/Yazlab1:3-Threads/Dokümanlar/Doküman.txt");
+        File file = new File("/Users/frowing/Projects/Yazlab1:3-Threads/Dokümanlar/" + dosyaAdi + ".txt");
 
         if(!file.exists()){
             file.createNewFile();

@@ -9,14 +9,15 @@ public class restoran {
     private int garsonSayi;
     private int musteriSayi;
     private int oncelikliMusteriSayisi;
-    private ArrayList<musteri> siraListesi = new ArrayList<musteri>();
-    private ArrayList<musteri> hesapSirasi = new ArrayList<musteri>();
+    private volatile ArrayList<musteri> siraListesi = new ArrayList<musteri>();
+    private volatile ArrayList<musteri> hesapSirasi = new ArrayList<musteri>();
 
     public ArrayList<musteri> musteriler = new ArrayList<musteri>();
     public ArrayList<asci> ascilar = new ArrayList<asci>();
     public ArrayList<garson> garsonlar = new ArrayList<garson>();
     public ArrayList<masa> masalar = new ArrayList<masa>();
     public kasaelemani kasaElemani = new kasaelemani("KasaElemanı1",this);
+
 
     public restoran(int asciSayi,int masaSayi,int garsonSayi,int musteriSayi,int oncelikliMusteriSayisi){
         this.asciSayi = asciSayi;
@@ -26,33 +27,33 @@ public class restoran {
         this.oncelikliMusteriSayisi = oncelikliMusteriSayisi;
     }
 
-    public int hesapSiramNe(musteri musteri){
+    public synchronized int hesapSiramNe(musteri musteri){
         return this.hesapSirasi.indexOf(musteri);
     }
 
-    public void hesapSirasindanCik(musteri musteri){
+    public synchronized void hesapSirasindanCik(musteri musteri){
         this.hesapSirasi.remove(musteri);
     }
 
-    public void hesapSirasinaGir(musteri musteri){
+    public synchronized void hesapSirasinaGir(musteri musteri){
         this.hesapSirasi.add(musteri);
     }
 
-    public void sirayaEkle(musteri musteri){
+    public synchronized void sirayaEkle(musteri musteri){
         this.siraListesi.add(musteri);
         sirayiDüzelt();
     }
 
-    public void siradanCikart(musteri musteri){
+    public synchronized void siradanCikart(musteri musteri){
        int index = this.siraListesi.indexOf(musteri);
        this.siraListesi.remove(index);
     }
 
-    public int siramNe(musteri musteri){
+    public synchronized int siramNe(musteri musteri){
         return this.siraListesi.indexOf(musteri);
     }
 
-    public void sirayiDüzelt(){
+    public synchronized void sirayiDüzelt(){
         for(int i = 0; i < this.siraListesi.size(); i++ ){
             for(int j = i + 1; j < this.siraListesi.size(); j++ ){
                 if(!this.siraListesi.get(i).onceliklimi() && this.siraListesi.get(j).onceliklimi()){

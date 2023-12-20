@@ -1,23 +1,27 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main {
 
     public static void main(String[] args){
 
-        TryFrame pencere = new TryFrame();
-        Document doküman = new Document();
+        //TryFrame pencere = new TryFrame();
+        //Document doküman = new Document();
 
-        pencere.AnaMenu();
-        doküman.yazdir("gardaş sakin la");
-
+        //pencere.AnaMenu();
+        //doküman.yazdir("gardaş sakin la");
 
         //Baslangic değerlerinin girilmesi
         restoran r = new restoran(2, 6, 3, 10,4);
+        ExecutorService musteriExec = Executors.newFixedThreadPool(r.getmusteriSayi());
+        ExecutorService garsonExec = Executors.newFixedThreadPool(r.getgarsonSayi());
+        ExecutorService asciExec = Executors.newFixedThreadPool(r.getasciSayi());
         Random random = new Random();
 
         int ref = 0;
-        while(true){
+        while(true) {
             if(ref < r.getasciSayi()){
                 r.ascilar.add(new asci("Aşçı"+ref));
             }
@@ -47,10 +51,29 @@ public class Main {
                 ref = 0;
                 break;
             }
+            ref++;
         }
 
+
+        for (musteri m : r.musteriler) {
+            musteriExec.submit(m);            
+        }
+        for (garson g : r.garsonlar) {
+            garsonExec.submit(g);
+        }
+        for (asci a : r.ascilar) {
+            asciExec.submit(a);
+        }
+        Thread kasaElemaniT = new Thread(r.kasaElemani);
+
+        musteriExec.shutdown();
+        garsonExec.shutdown();
+        asciExec.shutdown();
+        kasaElemaniT.start();
+
+
         //Kullanılıcak threadlerin oluşturulması
-        ArrayList<Thread> musterilerT = new ArrayList<Thread>();
+        /*ArrayList<Thread> musterilerT = new ArrayList<Thread>();
         ArrayList<Thread> ascilarT = new ArrayList<Thread>();
         ArrayList<Thread> garsonlarT = new ArrayList<Thread>();
         ArrayList<Thread> main = new ArrayList<Thread>();
@@ -74,7 +97,7 @@ public class Main {
         main.addAll(garsonlarT);
         main.add(kasaElemaniT1);
 
-        r.startAll(main);
+        r.startAll(main);*/
 
     }
 }

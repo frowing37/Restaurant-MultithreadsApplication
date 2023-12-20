@@ -15,17 +15,25 @@ public class garson implements Runnable {
     private boolean siparisHazır = false;
     private musteri _musteri;
     private restoran r;
+    private Document d;
 
     public void siparisHAzır() {
         this.siparisHazır = true;
     }
 
-    public boolean musteriyiKap(musteri musteri) {
-        for (musteri m : r.musteriler) {
-            if(m.garsonAtalımı()) {
-                m.garsonAtama();
-                this._musteri = musteri;
-                return true;
+    public boolean musteriyiKap() {
+        for (masa m : r.masalar) {
+            if(!m.uygunmu()){
+                for (musteri mu : r.musteriler) {
+                    if(mu.getMasa() == m){
+                        if(!mu.garsonAtalımı()){
+                            mu.garsonAtama();
+                            this._musteri = mu;
+                            System.out.println(this.name + ", " + mu.getName() + " ile ilgilenicek");
+                            return true;
+                        }
+                    }
+                }
             }
         }
         return false;
@@ -61,7 +69,7 @@ public class garson implements Runnable {
         while(true){
             switch(sira){
                 case 0:
-                if(musteriyiKap(_musteri)){
+                if(musteriyiKap()){
                     sira++;
                 }                
                 break;
