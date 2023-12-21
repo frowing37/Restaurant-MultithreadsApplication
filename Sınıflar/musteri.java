@@ -13,7 +13,7 @@ public class musteri implements Runnable {
         this.name = name;
         this.r = r;
         this.ID = rand.nextInt(100000,1000000);
-        System.out.println(this.name + " " + this.ID + " ID ile oluşturuldu !\n");
+        System.out.println(this.name + " oluşturuldu !\n");
     }
 
     private String name;
@@ -25,7 +25,8 @@ public class musteri implements Runnable {
     private boolean oncelik = false;
     private boolean hesapDurum = false;
     private boolean yemek = false;
-    private boolean garsonAtaması = false;
+    private volatile boolean garsonAtaması = false;
+    private volatile garson _garson;
     private int siraBeklemeSuresi = 0;
     private int maxsiraBeklemeSuresi = 20;
     private Document d;
@@ -54,8 +55,9 @@ public class musteri implements Runnable {
         return this.garsonAtaması;
     }
 
-    public void garsonAtama() {
+    public void garsonAtama(garson garson) {
         this.garsonAtaması = true;
+                this._garson = garson;
     }
 
     public void setSiparis() {
@@ -94,7 +96,7 @@ public class musteri implements Runnable {
     public void siraBekle(){
         try{
             Thread.sleep(1000);
-            System.out.println(this.name + " " + r.siramNe(this)  + ". sırada bekliyor");
+            //System.out.println(this.name + " " + r.siramNe(this)  + ". sırada bekliyor");
             siraBeklemeSuresi++;
         }
         catch(Exception e){
@@ -104,7 +106,7 @@ public class musteri implements Runnable {
 
     public void masayaOtur(masa masa){
         this.masa = masa;
-        masa.doldur();
+        masa.doldur(this);
         System.out.println(name + " " + this.masa.getName() + "'e oturdu\n");
                     
     }
@@ -163,7 +165,6 @@ public class musteri implements Runnable {
                 case 1:
                 if(!bosMasa()){
                     siraBekle();
-
                     if(this.siraBeklemeSuresi == this.maxsiraBeklemeSuresi) {
                     sart = restoraniTerket();
                     }

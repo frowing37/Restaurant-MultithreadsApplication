@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -70,34 +69,6 @@ public class Main {
         garsonExec.shutdown();
         asciExec.shutdown();
         kasaElemaniT.start();
-
-
-        //Kullanılıcak threadlerin oluşturulması
-        /*ArrayList<Thread> musterilerT = new ArrayList<Thread>();
-        ArrayList<Thread> ascilarT = new ArrayList<Thread>();
-        ArrayList<Thread> garsonlarT = new ArrayList<Thread>();
-        ArrayList<Thread> main = new ArrayList<Thread>();
-
-        for(int i=0; i< r.getmusteriSayi(); i++){
-            musterilerT.add(new Thread(r.musteriler.get(i)));
-        }
-
-        for(int i=0; i< r.getgarsonSayi(); i++){
-            garsonlarT.add(new Thread(r.garsonlar.get(i)));
-        }
-
-        for(int i=0; i< r.getasciSayi(); i++){
-            ascilarT.add(new Thread(r.ascilar.get(i)));
-        }
-        Thread kasaElemaniT1 = new Thread(r.kasaElemani);
-
-        //Toplu başlatmak için threadleri bir listeye topladık
-        main.addAll(musterilerT);
-        main.addAll(ascilarT);
-        main.addAll(garsonlarT);
-        main.add(kasaElemaniT1);
-
-        r.startAll(main);*/
 
     }
 }

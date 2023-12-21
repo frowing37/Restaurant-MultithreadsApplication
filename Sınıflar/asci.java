@@ -1,16 +1,22 @@
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
 
 public class asci implements Runnable {
     
     private String name;
-    private ArrayList<garson> yemekler = new ArrayList<garson>();
-    private yemek y1 = null;
-    private yemek y2 = null;
+    private ArrayList<yemek> yemekler = new ArrayList<yemek>();
+    private int yapilanAktifYemek = 0;
+    ExecutorService yemekExec = Executors.newFixedThreadPool(2);
     private Document d;
 
     public asci(String name) {
         this.name = name;
         System.out.println(name + " oluşturuldu !\n");
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public boolean asciUygunmu() {
@@ -22,15 +28,11 @@ public class asci implements Runnable {
         }
     }
 
-    public void siparisiAl(garson garson) { //Burası hatalı olabilir
+    public void siparisiAl(yemek yemek) {
         try{
-            yemekler.add(garson);
-            if(y1 == null){
-                y1 = new yemek(this, garson);
-            }
-            else if(y2 == null){
-                y2 = new yemek(this, garson);
-            }
+            this.yemekler.add(yemek);
+            System.out.println(this.yemekler);
+            this.yapilanAktifYemek++;
         }
         catch(Exception e){
 
@@ -38,18 +40,25 @@ public class asci implements Runnable {
     }
 
     public void yemekYap(yemek yemek) {
-        yemek.run();
+        this.yemekExec.submit(yemek);
         yemek.getGarson().siparisHAzır();
+        System.out.println(yemek.getAsci().getName() + ", " + yemek.getGarson().getName()  +"'un yemegini pisirdi");
+        this.yemekler.remove(yemek);
+        this.yapilanAktifYemek--;
     }
 
     @Override
     public void run(){
-        if(y1 != null){
-            yemekYap(y1);
+        while(true){
+            System.out.println(Yemekler());
+            if(!Yemekler().isEmpty()) {
+                yemekYap(Yemekler().get(0));
+            }
         }
-        if(y2 != null){
-            yemekYap(y2);
-        }
+    }
+
+    public ArrayList<yemek> Yemekler() {
+        return this.yemekler;
     }
 
 }

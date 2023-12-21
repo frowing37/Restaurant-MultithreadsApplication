@@ -1,3 +1,5 @@
+import java.util.concurrent.Semaphore;
+
 public class garson implements Runnable {
     
     public garson(String name,restoran r) {
@@ -16,20 +18,29 @@ public class garson implements Runnable {
     private musteri _musteri;
     private restoran r;
     private Document d;
+    private final Semaphore semaphore = new Semaphore(1);
+
 
     public void siparisHAzır() {
         this.siparisHazır = true;
     }
 
-    public boolean musteriyiKap() {
+    public synchronized boolean musteriyiKap() {
         for (masa m : r.masalar) {
-            if(!m.uygunmu()){
+            if(!m.uygunmu()) {
                 for (musteri mu : r.musteriler) {
-                    if(mu.getMasa() == m){
-                        if(!mu.garsonAtalımı()){
-                            mu.garsonAtama();
+                    if(mu.getMasa() == m && m.getMusteri() == mu) {
+                        if(!mu.garsonAtalımı()) {
+                            try{
+                                semaphore.acquire();
+                                mu.garsonAtama(this);
                             this._musteri = mu;
                             System.out.println(this.name + ", " + mu.getName() + " ile ilgilenicek");
+                            }catch(InterruptedException e){
+                                e.printStackTrace();
+                            }finally{
+                                semaphore.release();
+                            }
                             return true;
                         }
                     }
@@ -43,31 +54,33 @@ public class garson implements Runnable {
         try{
             Thread.sleep(2000);
             _musteri.setSiparis();
+            System.out.println(this.name + " " + this._musteri.getName() + "'in siparisini aldı" );
         }
         catch(Exception e){
 
         }
     }
 
-    public void asciyaVer() {
+    public boolean asciyaVer() {
         for (asci a : r.ascilar) {
-            if(a.asciUygunmu()){
-                a.siparisiAl(this);
+            if(a.asciUygunmu()) {
+                a.siparisiAl(new yemek(a, this));
+                System.out.println(a.getName() + " " + this.name + " siparisini yapmaya basladı");
+                return true;
             }
         }
+        return false;
     }
 
-    public boolean siparisHazırmı(){
+    public boolean siparisHazırmı() {
         return this.siparisHazır;
     }
 
     @Override
     public void run(){
-        
         int sira = 0;
-
         while(true){
-            switch(sira){
+            switch(sira) {
                 case 0:
                 if(musteriyiKap()){
                     sira++;
@@ -80,7 +93,9 @@ public class garson implements Runnable {
                 break;
 
                 case 2:
-                asciyaVer();
+                if(asciyaVer()) {
+                    sira++;
+                }
                 break;
 
                 case 3:
