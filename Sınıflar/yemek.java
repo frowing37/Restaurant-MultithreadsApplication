@@ -21,20 +21,12 @@ public class yemek implements Runnable {
         return this.aktiflik;
     }
 
-    public void aktifYap() {
-        if(this.aktiflik == true){
-            this.aktiflik = false;
-        }
-        else{
-            this.aktiflik = true;
-        }
-    }
-
     @Override
     public void run() {
         try{
-            System.out.println("Ben yemeğim pişiyorum amk");
             Thread.sleep(3000);
+            getGarson().siparisHAzır();
+            System.out.println(getAsci().getName() + ", " + getGarson().getName()  +"'un yemegini pisirdi");
         }
         catch(Exception e){
 

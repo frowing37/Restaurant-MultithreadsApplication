@@ -1,4 +1,5 @@
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class garson implements Runnable {
     
@@ -18,7 +19,7 @@ public class garson implements Runnable {
     private musteri _musteri;
     private restoran r;
     private Document d;
-    private final Semaphore semaphore = new Semaphore(1);
+    private final ReentrantLock lock = new ReentrantLock();
 
 
     public void siparisHAzır() {
@@ -31,15 +32,13 @@ public class garson implements Runnable {
                 for (musteri mu : r.musteriler) {
                     if(mu.getMasa() == m && m.getMusteri() == mu) {
                         if(!mu.garsonAtalımı()) {
+                            lock.lock();
                             try{
-                                semaphore.acquire();
                                 mu.garsonAtama(this);
-                            this._musteri = mu;
-                            System.out.println(this.name + ", " + mu.getName() + " ile ilgilenicek");
-                            }catch(InterruptedException e){
-                                e.printStackTrace();
+                                this._musteri = mu;
+                                System.out.println(this.name + ", " + mu.getName() + " ile ilgilenicek");
                             }finally{
-                                semaphore.release();
+                                lock.unlock();
                             }
                             return true;
                         }
@@ -57,7 +56,7 @@ public class garson implements Runnable {
             System.out.println(this.name + " " + this._musteri.getName() + "'in siparisini aldı" );
         }
         catch(Exception e){
-
+            
         }
     }
 
@@ -65,7 +64,7 @@ public class garson implements Runnable {
         for (asci a : r.ascilar) {
             if(a.asciUygunmu()) {
                 a.siparisiAl(new yemek(a, this));
-                System.out.println(a.getName() + " " + this.name + " siparisini yapmaya basladı");
+                System.out.println(a.getName() + ", " + this.name + " siparisini yapmaya basladı");
                 return true;
             }
         }

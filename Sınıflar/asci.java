@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 public class asci implements Runnable {
     
     private String name;
-    private ArrayList<yemek> yemekler = new ArrayList<yemek>();
+    private volatile ArrayList<yemek> yemekler = new ArrayList<yemek>();
     private int yapilanAktifYemek = 0;
     ExecutorService yemekExec = Executors.newFixedThreadPool(2);
     private Document d;
@@ -20,7 +20,7 @@ public class asci implements Runnable {
     }
 
     public boolean asciUygunmu() {
-        if(yemekler.size() < 2) {
+        if(yemekler.size() < 2  && this.yapilanAktifYemek != 2) {
             return true;
         }
         else{
@@ -28,11 +28,18 @@ public class asci implements Runnable {
         }
     }
 
+    public ArrayList<yemek> SiparisListesi() {
+        return this.yemekler;
+    }
+
     public void siparisiAl(yemek yemek) {
         try{
-            this.yemekler.add(yemek);
-            System.out.println(this.yemekler);
-            this.yapilanAktifYemek++;
+            if(this.yemekler.size() < 2){
+                if(this.yapilanAktifYemek < 2){
+                    this.yemekler.add(yemek);
+                    this.yapilanAktifYemek++;
+                }
+            }
         }
         catch(Exception e){
 
@@ -41,24 +48,23 @@ public class asci implements Runnable {
 
     public void yemekYap(yemek yemek) {
         this.yemekExec.submit(yemek);
-        yemek.getGarson().siparisHAzır();
-        System.out.println(yemek.getAsci().getName() + ", " + yemek.getGarson().getName()  +"'un yemegini pisirdi");
         this.yemekler.remove(yemek);
         this.yapilanAktifYemek--;
     }
 
-    @Override
-    public void run(){
-        while(true){
-            System.out.println(Yemekler());
-            if(!Yemekler().isEmpty()) {
-                yemekYap(Yemekler().get(0));
+    public void donUlanAsci() {
+        boolean still = true;
+
+        while(still) {
+            if(!this.yemekler.isEmpty() && yapilanAktifYemek < 2) {
+                yemekYap(this.yemekler.get(0));
             }
         }
     }
 
-    public ArrayList<yemek> Yemekler() {
-        return this.yemekler;
+    @Override
+    public void run() {
+        donUlanAsci();
     }
 
 }
