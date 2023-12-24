@@ -1,6 +1,7 @@
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -69,6 +70,14 @@ public class Main {
         garsonExec.shutdown();
         asciExec.shutdown();
         kasaElemaniT.start();
+
+        try{
+            musteriExec.awaitTermination(40, TimeUnit.SECONDS);
+            garsonExec.awaitTermination(40, TimeUnit.SECONDS);
+            asciExec.awaitTermination(40, TimeUnit.SECONDS);
+        }catch(InterruptedException e){
+            
+        }
 
     }
 }
