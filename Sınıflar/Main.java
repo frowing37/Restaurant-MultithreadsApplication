@@ -1,6 +1,7 @@
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -22,7 +23,7 @@ public class Main {
         int ref = 0;
         while(true) {
             if(ref < r.getasciSayi()){
-                r.ascilar.add(new asci("Aşçı"+ref));
+                r.ascilar.add(new asci("Aşçı"+ref,r));
             }
             if(ref < r.getmusteriSayi()){
                 r.musteriler.add(new musteri("Müşteri"+ref, r));
@@ -69,6 +70,14 @@ public class Main {
         garsonExec.shutdown();
         asciExec.shutdown();
         kasaElemaniT.start();
+
+        try{
+            musteriExec.awaitTermination(25, TimeUnit.SECONDS);
+            garsonExec.awaitTermination(25, TimeUnit.SECONDS);
+            asciExec.awaitTermination(25, TimeUnit.SECONDS);
+        }catch(Exception e){
+
+        }
 
     }
 }
