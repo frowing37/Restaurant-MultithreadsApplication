@@ -115,7 +115,7 @@ public class musteri implements Runnable {
     public void masayaOtur(masa masa){
         this.masa = masa;
         masa.doldur(this);
-        System.out.println(name + " " + this.masa.getName() + "'e oturdu\n");
+        System.out.println(name + " " + this.masa.getName() + "'e oturdu");
                     
     }
 
