@@ -23,7 +23,7 @@ public class Main {
         int ref = 0;
         while(true) {
             if(ref < r.getasciSayi()){
-                r.ascilar.add(new asci("Aşçı"+ref));
+                r.ascilar.add(new asci("Aşçı"+ref,r));
             }
             if(ref < r.getmusteriSayi()){
                 r.musteriler.add(new musteri("Müşteri"+ref, r));
@@ -70,14 +70,6 @@ public class Main {
         garsonExec.shutdown();
         asciExec.shutdown();
         kasaElemaniT.start();
-
-        try{
-            musteriExec.awaitTermination(40, TimeUnit.SECONDS);
-            garsonExec.awaitTermination(40, TimeUnit.SECONDS);
-            asciExec.awaitTermination(40, TimeUnit.SECONDS);
-        }catch(InterruptedException e){
-            
-        }
 
     }
 }

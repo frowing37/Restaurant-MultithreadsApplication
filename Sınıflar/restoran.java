@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 public class restoran {
     
     private int asciSayi;
@@ -53,14 +52,72 @@ public class restoran {
         return this.siraListesi.indexOf(musteri);
     }
 
+    public synchronized boolean SiparisiSunulduMu(musteri musteri) {
+        return musteri.SiparisSunulduMu();
+    }
+
     public synchronized void sirayiDüzelt(){
         for(int i = 0; i < this.siraListesi.size(); i++ ){
             for(int j = i + 1; j < this.siraListesi.size(); j++ ){
-                if(!this.siraListesi.get(i).onceliklimi() && this.siraListesi.get(j).onceliklimi()){
+                if(!this.siraListesi.get(i).onceliklimi() && this.siraListesi.get(j).onceliklimi()) {
                     Collections.swap(siraListesi, i, j);//indislerdeki müşterilerin yerlerini değiştiriyor
                 }
             }
         }
+    }
+
+    public synchronized boolean musterigarsonEslestir(garson garson) {
+        for (masa m : this.masalar) {
+            if(!m.uygunmu()) {
+                for (musteri musteri : this.musteriler) {
+                    if(musteri.getMasa() == m && m.getMusteri() == musteri) {
+                        if(!musteri.garsonAtalımı()) {
+                            try{
+                                musteri.garsonAtama(garson);
+                                garson.musteriAta(musteri);
+                                System.out.println(garson.getName() + ", " + musteri.getName() + " ile ilgilenicek");
+                            }catch(Exception e) {
+
+                            }
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public synchronized boolean ascisiparisEslestir(garson garson) {
+        for (asci asci : this.ascilar) {
+            if(asci.asciUygunmu()) {
+                asci.siparisiAl(new yemek(asci,garson,asci.getRestoran()));
+                System.out.println(asci.getName() + ", " + garson.getName() + " siparisini yapmaya basladı");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public synchronized boolean siparisimVarMı(asci asci) {
+        if(!asci.SiparisListesi().isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public yemek siparisYemeginiVer(asci asci) {
+        yemek y  = asci.SiparisListesi().get(0);
+        asci.decreaseYapilanAktifYemek();
+        return y;
+    }
+
+    public synchronized void siparisiListedenCikart(yemek yemek) {
+        asci asci = yemek.getAsci();
+        ArrayList<yemek> yemeks = asci.SiparisListesi();
+        yemeks.remove(yemek);
+        asci.SiparisListesiniGüncelle(yemeks);
     }
 
     public int getOncelikliSayi(){
@@ -83,7 +140,7 @@ public class restoran {
         return this.musteriSayi;
     }
 
-    public void startAll(ArrayList<Thread> allThreads){
+    public void startAll(ArrayList<Thread> allThreads) {
         for (Thread thread : allThreads) {
             thread.start();
         }

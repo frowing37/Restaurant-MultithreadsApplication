@@ -1,11 +1,10 @@
-import java.util.concurrent.locks.ReentrantLock;
 
 public class garson implements Runnable {
     
     public garson(String name,restoran r) {
         this.name = name;
         this.r = r;
-        System.out.println(name + " oluşturuldu !\n");
+        System.out.println(name + " oluşturuldu !");
     }
 
     public String getName(){
@@ -13,39 +12,28 @@ public class garson implements Runnable {
     }
 
     private String name;
-    private boolean musteri = false;
+    //private boolean musteri = false;
     private boolean siparisHazır = false;
     private musteri _musteri;
     private restoran r;
     private Document d;
-    private final ReentrantLock lock = new ReentrantLock();
 
 
     public void siparisHAzır() {
         this.siparisHazır = true;
     }
 
-    public synchronized boolean musteriyiKap() {
-        for (masa m : r.masalar) {
-            if(!m.uygunmu()) {
-                for (musteri mu : r.musteriler) {
-                    if(mu.getMasa() == m && m.getMusteri() == mu) {
-                        if(!mu.garsonAtalımı()) {
-                            lock.lock();
-                            try{
-                                mu.garsonAtama(this);
-                                this._musteri = mu;
-                                System.out.println(this.name + ", " + mu.getName() + " ile ilgilenicek");
-                            }finally{
-                                lock.unlock();
-                            }
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-        return false;
+    public void musteriAta(musteri musteri) {
+        this._musteri = musteri;
+    }
+
+    public void musteridenBosan() {
+        this._musteri = null;
+        System.out.println(getName() + ", yeni bir musteri icin hazir");
+    }
+
+    public musteri getMusteri() {
+        return this._musteri;
     }
 
     public void siparisAl(){
@@ -59,17 +47,6 @@ public class garson implements Runnable {
         }
     }
 
-    public boolean asciyaVer() {
-        for (asci a : r.ascilar) {
-            if(a.asciUygunmu()) {
-                a.siparisiAl(new yemek(a, this));
-                System.out.println(a.getName() + ", " + this.name + " siparisini yapmaya basladı");
-                return true;
-            }
-        }
-        return false;
-    }
-
     public boolean siparisHazırmı() {
         return this.siparisHazır;
     }
@@ -80,7 +57,7 @@ public class garson implements Runnable {
         while(true){
             switch(sira) {
                 case 0:
-                if(musteriyiKap()){
+                if(r.musterigarsonEslestir(this)) {
                     sira++;
                 }                
                 break;
@@ -91,7 +68,7 @@ public class garson implements Runnable {
                 break;
 
                 case 2:
-                if(asciyaVer()) {
+                if(r.ascisiparisEslestir(this)) {
                     sira++;
                 }
                 break;
@@ -104,13 +81,13 @@ public class garson implements Runnable {
 
                 case 4:
                 _musteri.siparisSunum();
+                System.out.println(getName() + ", " + getMusteri().getName() + "'in siparisini servis ediyor.");
                 sira++;
                 break;
 
                 case 5:
-                if(_musteri.odedinMiLan()){
-                    _musteri = null;
-                    musteri = false;
+                if(_musteri.odedinMiLan()) {
+                    musteridenBosan();
                     sira = 0;
                 }
                 break;

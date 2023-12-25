@@ -1,9 +1,4 @@
-import java.beans.Expression;
-import java.text.BreakIterator;
-import java.util.ArrayList;
 import java.util.Random;
-
-import javax.lang.model.util.ElementScanner14;
 
 public class musteri implements Runnable {
     
@@ -13,7 +8,7 @@ public class musteri implements Runnable {
         this.name = name;
         this.r = r;
         this.ID = rand.nextInt(100000,1000000);
-        System.out.println(this.name + " oluşturuldu !\n");
+        System.out.println(this.name + " oluşturuldu !");
     }
 
     private String name;
@@ -25,10 +20,11 @@ public class musteri implements Runnable {
     private boolean oncelik = false;
     private boolean hesapDurum = false;
     private boolean yemek = false;
-    private volatile boolean garsonAtaması = false;
-    private volatile garson _garson;
+    private boolean garsonAtaması = false;
+    private garson _garson;
     private int siraBeklemeSuresi = 0;
     private int maxsiraBeklemeSuresi = 20;
+    private boolean bitti = false;
     private Document d;
 
     public String getName(){
@@ -43,8 +39,20 @@ public class musteri implements Runnable {
         return this.masa;
     }
 
+    public void restorandaIsımBitti() {
+        this.bitti = true;
+    }
+
+    public boolean ciktinMi() {
+        return this.bitti;
+    }
+
     public void siparisSunum(){
         this.siparisHazır = true;
+    }
+
+    public boolean SiparisSunulduMu() {
+        return this.siparisHazır;
     }
 
     public void sethesapDurum(){
@@ -73,7 +81,7 @@ public class musteri implements Runnable {
     }
 
     public void restoranaGir(){
-        System.out.println(name + " Restorana girdi");
+        System.out.println(getName() + " restorana girdi");
         r.sirayaEkle(this);
     }
 
@@ -107,7 +115,7 @@ public class musteri implements Runnable {
     public void masayaOtur(masa masa){
         this.masa = masa;
         masa.doldur(this);
-        System.out.println(name + " " + this.masa.getName() + "'e oturdu\n");
+        System.out.println(name + " " + this.masa.getName() + "'e oturdu");
                     
     }
 
@@ -125,8 +133,8 @@ public class musteri implements Runnable {
     public void yeUlan(){
         try{
             this.yemek = true;
-            System.out.println(name + " yemeğini yedi");
             Thread.sleep(2000);
+            System.out.println(getName() + " yemeğini yedi");
             r.hesapSirasinaGir(this);
         }
         catch(Exception e){
@@ -155,31 +163,27 @@ public class musteri implements Runnable {
     public synchronized void run() {
         int sira = 0;
         boolean sart = true;
-        while(sart){
-            switch(sira){
+        while(sart) {
+            switch(sira) {
                 case 0:
                 restoranaGir();
                 sira++;
                 break;
 
                 case 1:
-                if(!bosMasa()){
+                if(!bosMasa()) {
                     siraBekle();
                     if(this.siraBeklemeSuresi == this.maxsiraBeklemeSuresi) {
                     sart = restoraniTerket();
                     }
-                }
-                 
-                else{
+                } else {
                     sira++;
                 }
                 break;
 
                 case 2:
-                if(this.siparisHazır) {
+                if(r.SiparisiSunulduMu(this)) {
                     sira++;
-                } else {
-                    //System.out.println(this.name + " masada siparişini bekliyor");
                 }
                 break;
                 
@@ -189,7 +193,7 @@ public class musteri implements Runnable {
                 break;
 
                 case 4:
-                if(hesapOde()){
+                if(hesapOde()) {
                     sira++;
                 }
                 break;
