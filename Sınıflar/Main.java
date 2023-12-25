@@ -71,10 +71,12 @@ public class Main {
         asciExec.shutdown();
         kasaElemaniT.start();
 
+
+
         try{
-            musteriExec.awaitTermination(25, TimeUnit.SECONDS);
-            garsonExec.awaitTermination(25, TimeUnit.SECONDS);
-            asciExec.awaitTermination(25, TimeUnit.SECONDS);
+            musteriExec.awaitTermination(50, TimeUnit.SECONDS);
+            garsonExec.awaitTermination(50, TimeUnit.SECONDS);
+            asciExec.awaitTermination(50, TimeUnit.SECONDS);
         }catch(Exception e){
 
         }

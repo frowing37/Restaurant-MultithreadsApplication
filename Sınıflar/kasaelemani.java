@@ -3,7 +3,7 @@ public class kasaelemani implements Runnable {
     public kasaelemani(String name,restoran r) {
         this.name = name;
         this.r = r;
-        System.out.println(name + " oluşturuldu !\n");
+        System.out.println(name + " oluşturuldu !");
     }
 
     private String name;
@@ -13,8 +13,8 @@ public class kasaelemani implements Runnable {
     public void hesapAl(musteri musteri) {
         try{
             Thread.sleep(1000);
+                System.out.println(musteri.getName() + " hesabını ödedi");
                 musteri.sethesapDurum();
-                System.out.println(name + " hesabını ödedi");
                 r.hesapSirasindanCik(musteri);
         }catch(Exception e){
 

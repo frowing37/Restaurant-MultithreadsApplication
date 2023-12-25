@@ -52,6 +52,10 @@ public class restoran {
         return this.siraListesi.indexOf(musteri);
     }
 
+    public synchronized boolean SiparisiSunulduMu(musteri musteri) {
+        return musteri.SiparisSunulduMu();
+    }
+
     public synchronized void sirayiDüzelt(){
         for(int i = 0; i < this.siraListesi.size(); i++ ){
             for(int j = i + 1; j < this.siraListesi.size(); j++ ){

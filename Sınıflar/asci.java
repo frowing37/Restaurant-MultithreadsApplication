@@ -14,7 +14,7 @@ public class asci implements Runnable {
     public asci(String name, restoran r) {
         this.name = name;
         this.r = r;
-        System.out.println(name + " oluşturuldu !\n");
+        System.out.println(name + " oluşturuldu !");
     }
 
     public String getName() {
@@ -60,7 +60,7 @@ public class asci implements Runnable {
     }
 
     public void yemekYap(yemek yemek) {
-        this.yemekExec.submit(yemek);
+        yemek.run();
     }
 
     @Override
@@ -72,7 +72,6 @@ public class asci implements Runnable {
                 if(r.siparisimVarMı(this)) {
                 yemekYap(r.siparisYemeginiVer(this));
                 }
-                Thread.sleep(1000);
             } catch(Exception e) {
 
             }

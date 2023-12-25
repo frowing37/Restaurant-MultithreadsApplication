@@ -1,12 +1,9 @@
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.ReentrantLock;
-
 public class garson implements Runnable {
     
     public garson(String name,restoran r) {
         this.name = name;
         this.r = r;
-        System.out.println(name + " oluşturuldu !\n");
+        System.out.println(name + " oluşturuldu !");
     }
 
     public String getName(){
@@ -31,6 +28,7 @@ public class garson implements Runnable {
 
     public void musteridenBosan() {
         this._musteri = null;
+        System.out.println(getName() + ", yeni bir musteri icin hazir");
     }
 
     public musteri getMusteri() {
@@ -82,6 +80,7 @@ public class garson implements Runnable {
 
                 case 4:
                 _musteri.siparisSunum();
+                System.out.println(getName() + ", " + getMusteri().getName() + "'in siparisini servis ediyor.");
                 sira++;
                 break;
 

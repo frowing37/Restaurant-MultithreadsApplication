@@ -37,14 +37,15 @@ public class yemek implements Runnable {
         try{
             if(aktifMi()) {
                  Thread.sleep(3000);
-                 getGarson().siparisHAzır();
                  r.siparisiListedenCikart(this);
                  this.aktiflik = false;
                  System.out.println(getAsci().getName() + ", " + getGarson().getName()  +"'un yemegini pisirdi");
+                 getGarson().siparisHAzır();
             } else {
-                System.out.println("YEMEK LİSTEDEN ÇIKMADI");
+                r.siparisiListedenCikart(this);
+                System.out.println("SİPARİŞ LİSTEDEN ÇIKMADI");
             }
-        }catch(Exception e){
+        } catch(Exception e) {
 
         }
     }
