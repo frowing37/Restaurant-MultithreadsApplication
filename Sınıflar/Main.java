@@ -1,11 +1,10 @@
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         //TryFrame pencere = new TryFrame();
         //Document doküman = new Document();

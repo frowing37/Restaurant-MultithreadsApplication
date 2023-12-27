@@ -122,11 +122,13 @@ public class musteri implements Runnable {
     public void restorandanCik(){
         this.masa.bosalt();
         System.out.println(name + " restorandan çıktı");
+        r.RestorandanCiktimGardasim(this);
     }
 
     public boolean restoraniTerket(){
         r.siradanCikart(this);
         System.out.println(name + " restoranı terk etti");
+        r.RestorandanCiktimGardasim(this);
         return false;
     }
 

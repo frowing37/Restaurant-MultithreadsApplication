@@ -10,6 +10,7 @@ public class restoran {
     private int oncelikliMusteriSayisi;
     private volatile ArrayList<musteri> siraListesi = new ArrayList<musteri>();
     private volatile ArrayList<musteri> hesapSirasi = new ArrayList<musteri>();
+    private ArrayList<musteri> restorandanCikanlar = new ArrayList<musteri>();
 
     public ArrayList<musteri> musteriler = new ArrayList<musteri>();
     public ArrayList<asci> ascilar = new ArrayList<asci>();
@@ -118,6 +119,13 @@ public class restoran {
         ArrayList<yemek> yemeks = asci.SiparisListesi();
         yemeks.remove(yemek);
         asci.SiparisListesiniGüncelle(yemeks);
+    }
+
+    public synchronized void RestorandanCiktimGardasim(musteri musteri) {
+        this.restorandanCikanlar.add(musteri);
+        if(restorandanCikanlar.size() == this.musteriSayi) {
+            System.out.println("RESTORANDA HİÇ MÜŞTERİ KALMADI");
+        }
     }
 
     public int getOncelikliSayi(){
