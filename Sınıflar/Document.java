@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 
 public class Document {
     
-    public static void yazdir(String icerik,String dosyaAdi){
+    public static synchronized void yazdir(String icerik,String dosyaAdi){
         try{
         File file = new File("/Users/frowing/Projects/Yazlab1:3-Threads/Dokümanlar/" + dosyaAdi + ".txt");
 
