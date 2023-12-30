@@ -6,10 +6,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //TryFrame pencere = new TryFrame();
+        TryFrame pencere = new TryFrame(); 
         //Document doküman = new Document();
 
-        //pencere.AnaMenu();
+        
+        //pencere.tryNet();
         //doküman.yazdir("gardaş sakin la");
 
         //Baslangic değerlerinin girilmesi
