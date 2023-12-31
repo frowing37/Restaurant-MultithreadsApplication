@@ -1,15 +1,9 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JToggleButton;
-import java.awt.EventQueue;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -78,9 +72,9 @@ public class TryFrame extends JFrame {
         JScrollPane jScrollPane2 = new javax.swing.JScrollPane();
         JScrollPane jScrollPane3 = new javax.swing.JScrollPane();
         JScrollPane jScrollPane4 = new javax.swing.JScrollPane();
-        
-    public void SimulasyonPenceresi() {
 
+    public void SimulasyonPenceresi() {
+        setTitle("Restorasyon Simülasyonu");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 51, 204));
         setForeground(new java.awt.Color(0, 51, 204));

@@ -14,10 +14,6 @@ public class Document {
             file.createNewFile();
         }
 
-        /*PrintWriter pw = new PrintWriter(file);
-        pw.println(icerik);
-        pw.close();*/
-
         FileWriter fileWriter = new FileWriter(file,true);
 
         BufferedWriter writer = new BufferedWriter(fileWriter);
