@@ -1,9 +1,12 @@
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -19,59 +22,71 @@ public class TryFrame extends JFrame {
         JLabel jLabel3 = new JLabel();
         JPanel jPanel6 = new JPanel();
         JPanel jPanel9 = new JPanel();
-        JPanel jPanel17 = new JPanel();
-        JLabel jLabel2 = new JLabel();
+        JPanel masa1 = new JPanel();
+        JLabel masa1yazi = new JLabel();
         JPanel jPanel7 = new JPanel();
-        JPanel jPanel25 = new JPanel();
-        JLabel jLabel9 = new JLabel();
+        JPanel masa2 = new JPanel();
+        JLabel masa2yazi = new JLabel();
         JPanel jPanel12 = new JPanel();
-        JPanel jPanel28 = new JPanel();
-        JLabel jLabel13 = new JLabel();
+        JPanel masa3 = new JPanel();
+        JLabel masa3yazi = new JLabel();
         JPanel jPanel8 = new JPanel();
-        JPanel jPanel18 = new JPanel();
-        JLabel jLabel7 = new JLabel();
+        JPanel masa4 = new JPanel();
+        JLabel masa4yazi = new JLabel();
         JPanel jPanel10 = new JPanel();
-        JPanel jPanel24 = new JPanel();
-        JLabel jLabel10 = new JLabel();
+        JPanel masa5 = new JPanel();
+        JLabel masa5yazi = new JLabel();
         JPanel jPanel11 = new JPanel();
-        JPanel jPanel27 = new JPanel();
-        JLabel jLabel14 = new JLabel();
+        JPanel masa6 = new JPanel();
+        JLabel masa6yazi = new JLabel();
         JPanel jPanel13 = new JPanel();
-        JPanel jPanel19 = new JPanel();
-        JLabel jLabel8 = new JLabel();
+        JPanel masa7 = new JPanel();
+        JLabel masa7yazi = new JLabel();
         JPanel jPanel14 = new JPanel();
-        JPanel jPanel22 = new JPanel();
-        JLabel jLabel11 = new JLabel();
+        JPanel masa8 = new JPanel();
+        JLabel masa8yazi = new JLabel();
         JPanel jPanel15 = new JPanel();
-        JPanel jPanel26 = new javax.swing.JPanel();
-        JLabel jLabel15 = new javax.swing.JLabel();
-        JPanel jPanel16 = new javax.swing.JPanel();
-        JPanel jPanel21 = new javax.swing.JPanel();
-        JLabel jLabel12 = new javax.swing.JLabel();
-        JPanel jPanel29 = new javax.swing.JPanel();
-        JPanel jPanel30 = new javax.swing.JPanel();
-        JLabel jLabel4 = new javax.swing.JLabel();
-        JPanel jPanel31 = new javax.swing.JPanel();
-        JPanel jPanel32 = new javax.swing.JPanel();
-        JLabel jLabel5 = new javax.swing.JLabel();
-        JPanel jPanel33 = new javax.swing.JPanel();
-        JPanel jPanel34 = new javax.swing.JPanel();
-        JLabel jLabel6 = new javax.swing.JLabel();
-        JPanel jPanel35 = new javax.swing.JPanel();
-        JButton jButton1 = new javax.swing.JButton();
-        JButton jButton2 = new javax.swing.JButton();
-        JLabel jLabel16 = new javax.swing.JLabel();
-        JLabel jLabel17 = new javax.swing.JLabel();
-        JLabel jLabel18 = new javax.swing.JLabel();
-        JLabel jLabel19 = new javax.swing.JLabel();
-        JList<String> jList1 = new javax.swing.JList<String>();
-        JList<String> jList2 = new javax.swing.JList<String>();
-        JList<String> jList3 = new javax.swing.JList<String>();
-        JList<String> jList4 = new javax.swing.JList<String>();
-        JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
-        JScrollPane jScrollPane2 = new javax.swing.JScrollPane();
-        JScrollPane jScrollPane3 = new javax.swing.JScrollPane();
-        JScrollPane jScrollPane4 = new javax.swing.JScrollPane();
+        JPanel masa9 = new JPanel();
+        JLabel masa9yazi = new JLabel();
+        JPanel jPanel16 = new JPanel();
+        JPanel masa10 = new JPanel();
+        JLabel masa10yazi = new JLabel();
+        JPanel jPanel29 = new JPanel();
+        JPanel jPanel30 = new JPanel();
+        JLabel jLabel4 = new JLabel();
+        JPanel jPanel31 = new JPanel();
+        JPanel jPanel32 = new JPanel();
+        JLabel jLabel5 = new JLabel();
+        JPanel jPanel33 = new JPanel();
+        JPanel jPanel34 = new JPanel();
+        JLabel jLabel6 = new JLabel();
+        JPanel jPanel35 = new JPanel();
+        JButton jButton1 = new JButton();
+        JButton jButton2 = new JButton();
+        JLabel jLabel16 = new JLabel();
+        JLabel jLabel17 = new JLabel();
+        JLabel jLabel18 = new JLabel();
+        JLabel jLabel19 = new JLabel();
+        private static JList<String> siradaBekleyenMusteriList = new JList<String>();
+        private static JList<String> garsonlarList = new JList<String>();
+        private static JList<String> ascilarList = new JList<String>();
+        private static JList<String> kasaSirasiList = new JList<String>();
+        private static JScrollPane siradaBekleyenMusteriPanel = new JScrollPane();
+        private static JScrollPane garsonlarPanel = new JScrollPane();
+        private static JScrollPane ascilarPanel = new JScrollPane();
+        private static JScrollPane kasaSirasiPanel = new JScrollPane();
+
+    public void siradaBekleyenleriGuncelle(ArrayList<String> list) {
+
+            DefaultListModel<String> tempList = new DefaultListModel<String>();
+            for (String string : list) {
+                tempList.addElement(string);
+            }
+
+            JList<String> newSiraList = new JList<>(tempList);
+
+            this.siradaBekleyenMusteriList = newSiraList;
+        }
 
     public void SimulasyonPenceresi() {
         setTitle("Restorasyon Simülasyonu");
@@ -90,15 +105,15 @@ public class TryFrame extends JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Sırada Bekleyen Müşteriler");
 
-        jList1.setBackground(new java.awt.Color(0, 51, 102));
-        jList1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jList1.setForeground(new java.awt.Color(255, 255, 255));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        siradaBekleyenMusteriList.setBackground(new java.awt.Color(0, 51, 102));
+        siradaBekleyenMusteriList.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        siradaBekleyenMusteriList.setForeground(new java.awt.Color(255, 255, 255));
+        siradaBekleyenMusteriList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        siradaBekleyenMusteriPanel.setViewportView(siradaBekleyenMusteriList);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -110,7 +125,7 @@ public class TryFrame extends JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 17, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                    .addComponent(siradaBekleyenMusteriPanel))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -119,7 +134,7 @@ public class TryFrame extends JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
+                .addComponent(siradaBekleyenMusteriPanel)
                 .addContainerGap())
         );
 
@@ -152,26 +167,26 @@ public class TryFrame extends JFrame {
 
         jPanel9.setBackground(new java.awt.Color(79, 58, 14));
 
-        jPanel17.setBackground(new java.awt.Color(79, 43, 44));
+        masa1.setBackground(new java.awt.Color(79, 43, 44));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Boş");
-        jLabel2.setToolTipText("");
+        masa1yazi.setForeground(new java.awt.Color(255, 255, 255));
+        masa1yazi.setText("Boş");
+        masa1yazi.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
+        javax.swing.GroupLayout masa1Layout = new javax.swing.GroupLayout(masa1);
+        masa1.setLayout(masa1Layout);
+        masa1Layout.setHorizontalGroup(
+            masa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masa1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel2)
+                .addComponent(masa1yazi)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
+        masa1Layout.setVerticalGroup(
+            masa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masa1Layout.createSequentialGroup()
                 .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(masa1yazi)
                 .addContainerGap())
         );
 
@@ -181,39 +196,39 @@ public class TryFrame extends JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel7.setBackground(new java.awt.Color(79, 58, 14));
 
-        jPanel25.setBackground(new java.awt.Color(79, 43, 44));
+        masa2.setBackground(new java.awt.Color(79, 43, 44));
 
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Boş");
-        jLabel9.setToolTipText("");
+        masa2yazi.setForeground(new java.awt.Color(255, 255, 255));
+        masa2yazi.setText("Boş");
+        masa2yazi.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
-        jPanel25.setLayout(jPanel25Layout);
-        jPanel25Layout.setHorizontalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel25Layout.createSequentialGroup()
+        javax.swing.GroupLayout masa2Layout = new javax.swing.GroupLayout(masa2);
+        masa2.setLayout(masa2Layout);
+        masa2Layout.setHorizontalGroup(
+            masa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masa2Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel9)
+                .addComponent(masa2yazi)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
-        jPanel25Layout.setVerticalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
+        masa2Layout.setVerticalGroup(
+            masa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masa2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9)
+                .addComponent(masa2yazi)
                 .addContainerGap())
         );
 
@@ -223,39 +238,39 @@ public class TryFrame extends JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel12.setBackground(new java.awt.Color(79, 58, 14));
 
-        jPanel28.setBackground(new java.awt.Color(79, 43, 44));
+        masa3.setBackground(new java.awt.Color(79, 43, 44));
 
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Boş");
-        jLabel13.setToolTipText("");
+        masa3yazi.setForeground(new java.awt.Color(255, 255, 255));
+        masa3yazi.setText("Boş");
+        masa3yazi.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
-        jPanel28.setLayout(jPanel28Layout);
-        jPanel28Layout.setHorizontalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel28Layout.createSequentialGroup()
+        javax.swing.GroupLayout masa3Layout = new javax.swing.GroupLayout(masa3);
+        masa3.setLayout(masa3Layout);
+        masa3Layout.setHorizontalGroup(
+            masa3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masa3Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel13)
+                .addComponent(masa3yazi)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
-        jPanel28Layout.setVerticalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
+        masa3Layout.setVerticalGroup(
+            masa3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masa3Layout.createSequentialGroup()
                 .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(jLabel13)
+                .addComponent(masa3yazi)
                 .addContainerGap())
         );
 
@@ -265,39 +280,39 @@ public class TryFrame extends JFrame {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel8.setBackground(new java.awt.Color(79, 58, 14));
 
-        jPanel18.setBackground(new java.awt.Color(79, 43, 44));
+        masa4.setBackground(new java.awt.Color(79, 43, 44));
 
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Boş");
-        jLabel7.setToolTipText("");
+        masa4yazi.setForeground(new java.awt.Color(255, 255, 255));
+        masa4yazi.setText("Boş");
+        masa4yazi.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
+        javax.swing.GroupLayout masa4Layout = new javax.swing.GroupLayout(masa4);
+        masa4.setLayout(masa4Layout);
+        masa4Layout.setHorizontalGroup(
+            masa4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masa4Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel7)
+                .addComponent(masa4yazi)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+        masa4Layout.setVerticalGroup(
+            masa4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masa4Layout.createSequentialGroup()
                 .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(jLabel7)
+                .addComponent(masa4yazi)
                 .addContainerGap())
         );
 
@@ -307,39 +322,39 @@ public class TryFrame extends JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel10.setBackground(new java.awt.Color(79, 58, 14));
 
-        jPanel24.setBackground(new java.awt.Color(79, 43, 44));
+        masa5.setBackground(new java.awt.Color(79, 43, 44));
 
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Boş");
-        jLabel10.setToolTipText("");
+        masa5yazi.setForeground(new java.awt.Color(255, 255, 255));
+        masa5yazi.setText("Boş");
+        masa5yazi.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
-        jPanel24.setLayout(jPanel24Layout);
-        jPanel24Layout.setHorizontalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel24Layout.createSequentialGroup()
+        javax.swing.GroupLayout masa5Layout = new javax.swing.GroupLayout(masa5);
+        masa5.setLayout(masa5Layout);
+        masa5Layout.setHorizontalGroup(
+            masa5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masa5Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel10)
+                .addComponent(masa5yazi)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel24Layout.setVerticalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
+        masa5Layout.setVerticalGroup(
+            masa5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masa5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10)
+                .addComponent(masa5yazi)
                 .addContainerGap())
         );
 
@@ -349,39 +364,39 @@ public class TryFrame extends JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5))
         );
 
         jPanel11.setBackground(new java.awt.Color(79, 58, 14));
 
-        jPanel27.setBackground(new java.awt.Color(79, 43, 44));
+        masa6.setBackground(new java.awt.Color(79, 43, 44));
 
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Boş");
-        jLabel14.setToolTipText("");
+        masa6yazi.setForeground(new java.awt.Color(255, 255, 255));
+        masa6yazi.setText("Boş");
+        masa6yazi.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
-        jPanel27.setLayout(jPanel27Layout);
-        jPanel27Layout.setHorizontalGroup(
-            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel27Layout.createSequentialGroup()
+        javax.swing.GroupLayout masa6Layout = new javax.swing.GroupLayout(masa6);
+        masa6.setLayout(masa6Layout);
+        masa6Layout.setHorizontalGroup(
+            masa6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masa6Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel14)
+                .addComponent(masa6yazi)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel27Layout.setVerticalGroup(
-            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
+        masa6Layout.setVerticalGroup(
+            masa6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masa6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel14)
+                .addComponent(masa6yazi)
                 .addContainerGap())
         );
 
@@ -391,39 +406,39 @@ public class TryFrame extends JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5))
         );
 
         jPanel13.setBackground(new java.awt.Color(79, 58, 14));
 
-        jPanel19.setBackground(new java.awt.Color(79, 43, 44));
+        masa7.setBackground(new java.awt.Color(79, 43, 44));
 
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Boş");
-        jLabel8.setToolTipText("");
+        masa7yazi.setForeground(new java.awt.Color(255, 255, 255));
+        masa7yazi.setText("Boş");
+        masa7yazi.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
-        jPanel19.setLayout(jPanel19Layout);
-        jPanel19Layout.setHorizontalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel19Layout.createSequentialGroup()
+        javax.swing.GroupLayout masa7Layout = new javax.swing.GroupLayout(masa7);
+        masa7.setLayout(masa7Layout);
+        masa7Layout.setHorizontalGroup(
+            masa7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masa7Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel8)
+                .addComponent(masa7yazi)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
-        jPanel19Layout.setVerticalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+        masa7Layout.setVerticalGroup(
+            masa7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masa7Layout.createSequentialGroup()
                 .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(jLabel8)
+                .addComponent(masa7yazi)
                 .addContainerGap())
         );
 
@@ -433,39 +448,39 @@ public class TryFrame extends JFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel14.setBackground(new java.awt.Color(79, 58, 14));
 
-        jPanel22.setBackground(new java.awt.Color(79, 43, 44));
+        masa8.setBackground(new java.awt.Color(79, 43, 44));
 
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Boş");
-        jLabel11.setToolTipText("");
+        masa8yazi.setForeground(new java.awt.Color(255, 255, 255));
+        masa8yazi.setText("Boş");
+        masa8yazi.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
+        javax.swing.GroupLayout masa8Layout = new javax.swing.GroupLayout(masa8);
+        masa8.setLayout(masa8Layout);
+        masa8Layout.setHorizontalGroup(
+            masa8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masa8Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel11)
+                .addComponent(masa8yazi)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+        masa8Layout.setVerticalGroup(
+            masa8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masa8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel11)
+                .addComponent(masa8yazi)
                 .addContainerGap())
         );
 
@@ -475,39 +490,39 @@ public class TryFrame extends JFrame {
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5))
         );
 
         jPanel15.setBackground(new java.awt.Color(79, 58, 14));
 
-        jPanel26.setBackground(new java.awt.Color(79, 43, 44));
+        masa9.setBackground(new java.awt.Color(79, 43, 44));
 
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Boş");
-        jLabel15.setToolTipText("");
+        masa9yazi.setForeground(new java.awt.Color(255, 255, 255));
+        masa9yazi.setText("Boş");
+        masa9yazi.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
-        jPanel26.setLayout(jPanel26Layout);
-        jPanel26Layout.setHorizontalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel26Layout.createSequentialGroup()
+        javax.swing.GroupLayout masa9Layout = new javax.swing.GroupLayout(masa9);
+        masa9.setLayout(masa9Layout);
+        masa9Layout.setHorizontalGroup(
+            masa9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masa9Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel15)
+                .addComponent(masa9yazi)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel26Layout.setVerticalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
+        masa9Layout.setVerticalGroup(
+            masa9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, masa9Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel15)
+                .addComponent(masa9yazi)
                 .addContainerGap())
         );
 
@@ -517,39 +532,39 @@ public class TryFrame extends JFrame {
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5))
         );
 
         jPanel16.setBackground(new java.awt.Color(79, 58, 14));
 
-        jPanel21.setBackground(new java.awt.Color(79, 43, 44));
+        masa10.setBackground(new java.awt.Color(79, 43, 44));
 
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Boş");
-        jLabel12.setToolTipText("");
+        masa10yazi.setForeground(new java.awt.Color(255, 255, 255));
+        masa10yazi.setText("Boş");
+        masa10yazi.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
+        javax.swing.GroupLayout masa10Layout = new javax.swing.GroupLayout(masa10);
+        masa10.setLayout(masa10Layout);
+        masa10Layout.setHorizontalGroup(
+            masa10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masa10Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel12)
+                .addComponent(masa10yazi)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
+        masa10Layout.setVerticalGroup(
+            masa10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masa10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12)
+                .addComponent(masa10yazi)
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
@@ -559,14 +574,14 @@ public class TryFrame extends JFrame {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(masa10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -668,14 +683,14 @@ public class TryFrame extends JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Garsonlar");
 
-        jList2.setBackground(new java.awt.Color(0, 51, 102));
-        jList2.setForeground(new java.awt.Color(255, 255, 255));
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        garsonlarList.setBackground(new java.awt.Color(0, 51, 102));
+        garsonlarList.setForeground(new java.awt.Color(255, 255, 255));
+        garsonlarList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList2);
+        garsonlarPanel.setViewportView(garsonlarList);
 
         jLabel16.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -693,7 +708,7 @@ public class TryFrame extends JFrame {
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2))
+                        .addComponent(garsonlarPanel))
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addGap(84, 84, 84)
                         .addComponent(jLabel4)
@@ -716,7 +731,7 @@ public class TryFrame extends JFrame {
                     .addComponent(jLabel16)
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(garsonlarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -753,14 +768,14 @@ public class TryFrame extends JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Aktif Hazırladığı Yemekler");
 
-        jList3.setBackground(new java.awt.Color(0, 51, 102));
-        jList3.setForeground(new java.awt.Color(255, 255, 255));
-        jList3.setModel(new javax.swing.AbstractListModel<String>() {
+        ascilarList.setBackground(new java.awt.Color(0, 51, 102));
+        ascilarList.setForeground(new java.awt.Color(255, 255, 255));
+        ascilarList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList3);
+        ascilarPanel.setViewportView(ascilarList);
 
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
@@ -768,7 +783,7 @@ public class TryFrame extends JFrame {
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3)
+                .addComponent(ascilarPanel)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -791,7 +806,7 @@ public class TryFrame extends JFrame {
                     .addComponent(jLabel18)
                     .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ascilarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -820,14 +835,14 @@ public class TryFrame extends JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Kasa Sırası");
 
-        jList4.setBackground(new java.awt.Color(0, 51, 102));
-        jList4.setForeground(new java.awt.Color(255, 255, 255));
-        jList4.setModel(new javax.swing.AbstractListModel<String>() {
+        kasaSirasiList.setBackground(new java.awt.Color(0, 51, 102));
+        kasaSirasiList.setForeground(new java.awt.Color(255, 255, 255));
+        kasaSirasiList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane4.setViewportView(jList4);
+        kasaSirasiPanel.setViewportView(kasaSirasiList);
 
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
         jPanel34.setLayout(jPanel34Layout);
@@ -839,7 +854,7 @@ public class TryFrame extends JFrame {
                 .addGap(95, 95, 95))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4)
+                .addComponent(kasaSirasiPanel)
                 .addContainerGap())
         );
         jPanel34Layout.setVerticalGroup(
@@ -848,7 +863,7 @@ public class TryFrame extends JFrame {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4)
+                .addComponent(kasaSirasiPanel)
                 .addContainerGap())
         );
 

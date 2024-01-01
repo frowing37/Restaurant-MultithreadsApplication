@@ -1,8 +1,16 @@
+import java.util.ArrayList;
 
 public class kompakt {
     
-    public synchronized void siradaBekleyenleriGuncelle() {
+    public kompakt() {}
 
+    public static synchronized void siradaBekleyenleriGuncelle(ArrayList<musteri> siradaBekleyenler) {
+        ArrayList<String> siradaBekleyenlerIsimListesi = new ArrayList<String>();
+        for (musteri musteri : siradaBekleyenler) {
+            siradaBekleyenlerIsimListesi.add(musteri.getName());
+        }
+        TryFrame a = new TryFrame();
+        a.siradaBekleyenleriGuncelle(siradaBekleyenlerIsimListesi);
     }
 
     public synchronized void garsonlariGuncelle() {
