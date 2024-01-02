@@ -1,65 +1,117 @@
-Müşteri2
-BİR KEZ ÇALIŞTI
-Müşteri2
-Müşteri9
-BİR KEZ ÇALIŞTI
-Müşteri8
-Müşteri9
-Müşteri2
-BİR KEZ ÇALIŞTI
-Müşteri8
-Müşteri9
-Müşteri2
-Müşteri7
-BİR KEZ ÇALIŞTI
-Müşteri8
-Müşteri9
-Müşteri2
-Müşteri7
-Müşteri6
-BİR KEZ ÇALIŞTI
-Müşteri8
-Müşteri1
-Müşteri2
-Müşteri7
-Müşteri6
-Müşteri9
-BİR KEZ ÇALIŞTI
-Müşteri8
-Müşteri1
-Müşteri2
-Müşteri7
-Müşteri6
-Müşteri9
-Müşteri5
-BİR KEZ ÇALIŞTI
-Müşteri8
-Müşteri1
-Müşteri0
-Müşteri7
-Müşteri6
-Müşteri9
-Müşteri5
-Müşteri2
-BİR KEZ ÇALIŞTI
-Müşteri8
-Müşteri1
-Müşteri0
-Müşteri7
-Müşteri6
-Müşteri9
-Müşteri5
-Müşteri2
-Müşteri3
-BİR KEZ ÇALIŞTI
-Müşteri8
-Müşteri1
-Müşteri0
-Müşteri4
-Müşteri6
-Müşteri9
-Müşteri5
-Müşteri2
-Müşteri3
-Müşteri7
-BİR KEZ ÇALIŞTI
+KasaElemanı1 oluşturuldu !
+Aşçı0 oluşturuldu !
+Müşteri0 oluşturuldu !
+Garson0 oluşturuldu !
+Aşçı1 oluşturuldu !
+Müşteri1 oluşturuldu !
+Garson1 oluşturuldu !
+Müşteri2 oluşturuldu !
+Garson2 oluşturuldu !
+Müşteri3 oluşturuldu !
+Müşteri4 oluşturuldu !
+Müşteri5 oluşturuldu !
+Müşteri6 oluşturuldu !
+Müşteri7 oluşturuldu !
+Müşteri8 oluşturuldu !
+Müşteri9 oluşturuldu !
+Müşteri0 restorana girdi
+Müşteri1 restorana girdi
+Müşteri2 restorana girdi
+Müşteri0 Masa0'e oturdu
+Müşteri3 restorana girdi
+Müşteri5 restorana girdi
+Müşteri4 restorana girdi
+Müşteri7 restorana girdi
+Müşteri6 restorana girdi
+Müşteri8 restorana girdi
+Müşteri9 restorana girdi
+Garson0, Müşteri0 ile ilgilenicek
+Müşteri1 Masa1'e oturdu
+Garson1, Müşteri1 ile ilgilenicek
+Garson0 Müşteri0'in siparisini aldı
+Müşteri5 Masa2'e oturdu
+Aşçı0, Garson0 siparisini yapmaya basladı
+Garson2, Müşteri5 ile ilgilenicek
+Müşteri8 Masa3'e oturdu
+Garson1 Müşteri1'in siparisini aldı
+Müşteri2 Masa4'e oturdu
+Aşçı0, Garson1 siparisini yapmaya basladı
+Müşteri4 Masa5'e oturdu
+Garson2 Müşteri5'in siparisini aldı
+Aşçı1, Garson2 siparisini yapmaya basladı
+Aşçı0, Garson0'un yemegini pisirdi
+Garson0, Müşteri0'in siparisini servis ediyor.
+Müşteri0 yemeğini yedi
+Aşçı1, Garson2'un yemegini pisirdi
+Garson2, Müşteri5'in siparisini servis ediyor.
+Aşçı0, Garson1'un yemegini pisirdi
+Müşteri0 hesabını ödedi
+Garson1, Müşteri1'in siparisini servis ediyor.
+Garson0, yeni bir musteri icin hazir
+Garson0, Müşteri8 ile ilgilenicek
+Müşteri7 Masa0'e oturdu
+Müşteri5 yemeğini yedi
+Müşteri5 hesabını ödedi
+Garson2, yeni bir musteri icin hazir
+Garson2, Müşteri7 ile ilgilenicek
+Müşteri1 yemeğini yedi
+Garson0 Müşteri8'in siparisini aldı
+Aşçı0, Garson0 siparisini yapmaya basladı
+Garson0, Müşteri8'in siparisini servis ediyor.
+Müşteri6 Masa2'e oturdu
+Müşteri1 hesabını ödedi
+Garson1, yeni bir musteri icin hazir
+Garson1, Müşteri6 ile ilgilenicek
+Müşteri3 Masa1'e oturdu
+Garson2 Müşteri7'in siparisini aldı
+Aşçı0, Garson2 siparisini yapmaya basladı
+Garson2, Müşteri7'in siparisini servis ediyor.
+Müşteri8 yemeğini yedi
+Aşçı0, Garson0'un yemegini pisirdi
+Garson1 Müşteri6'in siparisini aldı
+Aşçı0, Garson1 siparisini yapmaya basladı
+Garson1, Müşteri6'in siparisini servis ediyor.
+Müşteri8 hesabını ödedi
+Garson0, yeni bir musteri icin hazir
+Garson0, Müşteri3 ile ilgilenicek
+Müşteri9 Masa3'e oturdu
+Müşteri7 yemeğini yedi
+Garson0 Müşteri3'in siparisini aldı
+Müşteri6 yemeğini yedi
+Müşteri7 hesabını ödedi
+Aşçı1, Garson0 siparisini yapmaya basladı
+Garson0, Müşteri3'in siparisini servis ediyor.
+Garson2, yeni bir musteri icin hazir
+Garson2, Müşteri9 ile ilgilenicek
+Aşçı0, Garson2'un yemegini pisirdi
+Müşteri6 hesabını ödedi
+Garson1, yeni bir musteri icin hazir
+Garson1, Müşteri2 ile ilgilenicek
+Müşteri3 yemeğini yedi
+Garson2 Müşteri9'in siparisini aldı
+Aşçı0, Garson2 siparisini yapmaya basladı
+Garson2, Müşteri9'in siparisini servis ediyor.
+Aşçı1, Garson0'un yemegini pisirdi
+Garson1 Müşteri2'in siparisini aldı
+Aşçı1, Garson1 siparisini yapmaya basladı
+Garson1, Müşteri2'in siparisini servis ediyor.
+Müşteri3 hesabını ödedi
+Garson0, yeni bir musteri icin hazir
+Garson0, Müşteri4 ile ilgilenicek
+Aşçı0, Garson1'un yemegini pisirdi
+Müşteri9 yemeğini yedi
+Müşteri2 yemeğini yedi
+Garson0 Müşteri4'in siparisini aldı
+Aşçı0, Garson0 siparisini yapmaya basladı
+Garson0, Müşteri4'in siparisini servis ediyor.
+Müşteri9 hesabını ödedi
+Garson2, yeni bir musteri icin hazir
+Aşçı1, Garson1'un yemegini pisirdi
+Müşteri2 hesabını ödedi
+Garson1, yeni bir musteri icin hazir
+Aşçı0, Garson2'un yemegini pisirdi
+Müşteri4 yemeğini yedi
+Müşteri4 hesabını ödedi
+Garson0, yeni bir musteri icin hazir
+RESTORANDA HİÇ MÜŞTERİ KALMADI
+Aşçı0, Garson0'un yemegini pisirdi

@@ -12,7 +12,6 @@ public class restoran {
     private ArrayList<musteri> siraListesi = new ArrayList<musteri>();
     private ArrayList<musteri> hesapSirasi = new ArrayList<musteri>();
     private ArrayList<musteri> restorandanCikanlar = new ArrayList<musteri>();
-
     public ArrayList<musteri> musteriler = new ArrayList<musteri>();
     public ArrayList<asci> ascilar = new ArrayList<asci>();
     public ArrayList<garson> garsonlar = new ArrayList<garson>();
@@ -27,6 +26,26 @@ public class restoran {
         this.garsonSayi = garsonSayi;
         this.musteriSayi = musteriSayi;
         this.oncelikliMusteriSayisi = oncelikliMusteriSayisi;
+    }
+
+    public ArrayList<masa> getMasaListesi() {
+        return this.masalar;
+    }
+
+    public ArrayList<musteri> getSiraListesi() {
+        return this.siraListesi;
+    }
+
+    public ArrayList<musteri> getHesapSiraListesi() {
+        return this.hesapSirasi;
+    }
+
+    public ArrayList<asci> getAsciListesi() {
+        return this.ascilar;
+    }
+
+    public ArrayList<garson> getGarsonListesi() {
+        return this.garsonlar;
     }
 
     public synchronized int hesapSiramNe(musteri musteri){
@@ -81,7 +100,8 @@ public class restoran {
                                 musteri.garsonAtama(garson);
                                 garson.musteriAta(musteri);
                                 System.out.println(garson.getName() + ", " + musteri.getName() + " ile ilgilenicek");
-                                d.yazdir(garson.getName() + ", " + musteri.getName() + " ile ilgilenicek");
+                                String str1 = garson.getName() + ", " + musteri.getName() + " ile ilgilenicek"; 
+                                d.yazdir(str1);
                             }catch(Exception e) {
 
                             }

@@ -68,14 +68,26 @@ public class TryFrame extends JFrame {
         JLabel jLabel19 = new JLabel();
         JFrame main = new JFrame();
         private static JList<String> siradaBekleyenMusteriList = new JList<String>();
-        private static DefaultListModel<String> tmpsiradaBekleyenMusteriList = new DefaultListModel<String>();        
         private static JList<String> garsonlarList = new JList<String>();
         private static JList<String> ascilarList = new JList<String>();
         private static JList<String> kasaSirasiList = new JList<String>();
+        private static DefaultListModel<String> tmpsiradaBekleyenMusteriList = new DefaultListModel<String>();
+        private static DefaultListModel<String> tmpgarsonlarList = new DefaultListModel<String>();
+        private static DefaultListModel<String> tmpascilarList = new DefaultListModel<String>();
+        private static DefaultListModel<String> tmphesapsirasindaBekleyenMusteriList = new DefaultListModel<String>();
+        private static ArrayList<JLabel> tmpMasaDurumları = new ArrayList<JLabel>();
         private static JScrollPane siradaBekleyenMusteriPanel = new JScrollPane();
         private static JScrollPane garsonlarPanel = new JScrollPane();
         private static JScrollPane ascilarPanel = new JScrollPane();
         private static JScrollPane kasaSirasiPanel = new JScrollPane();
+
+        public restoran r;
+
+    public void masaDurumlariniGuncelle(ArrayList<String> list) {
+        for(int i = 0; i < 10; i++) {
+            tmpMasaDurumları.get(i).setText(list.get(i));
+        }
+    }    
 
     public void siradaBekleyenleriGuncelle(ArrayList<String> list) {
             DefaultListModel<String> tempList = new DefaultListModel<String>();
@@ -86,9 +98,50 @@ public class TryFrame extends JFrame {
             siradaBekleyenMusteriList.setModel(tmpsiradaBekleyenMusteriList);
             siradaBekleyenMusteriList.repaint();
         }
+       
+    public void garsonlariGuncelle(ArrayList<String> list) {
+        DefaultListModel<String> tempList = new DefaultListModel<String>();
+            for (String string : list) {
+                tempList.addElement(string);
+            }
+            tmpgarsonlarList = tempList;
+            garsonlarList.setModel(tmpgarsonlarList);
+            garsonlarList.repaint();
+    }    
 
-    public void SimulasyonPenceresi() {
+    public void ascilariGuncelle(ArrayList<String> list) {
+        DefaultListModel<String> tempList = new DefaultListModel<String>();
+            for (String string : list) {
+                tempList.addElement(string);
+            }
+            tmpascilarList = tempList;
+            ascilarList.setModel(tmpascilarList);
+            ascilarList.repaint();
+    }
+
+    public void kasaSirasiGuncelle(ArrayList<String> list) {
+        DefaultListModel<String> tempList = new DefaultListModel<String>();
+            for (String string : list) {
+                tempList.addElement(string);
+            }
+            tmphesapsirasindaBekleyenMusteriList = tempList;
+            kasaSirasiList.setModel(tmphesapsirasindaBekleyenMusteriList);
+            kasaSirasiList.repaint();
+    }
+
+    public void SimulasyonPenceresi(restoran r) {
         setTitle("Restorasyon Simülasyonu");
+        this.r = r;
+        tmpMasaDurumları.add(masa1yazi);
+        tmpMasaDurumları.add(masa2yazi);
+        tmpMasaDurumları.add(masa3yazi);
+        tmpMasaDurumları.add(masa4yazi);
+        tmpMasaDurumları.add(masa5yazi);
+        tmpMasaDurumları.add(masa6yazi);
+        tmpMasaDurumları.add(masa7yazi);
+        tmpMasaDurumları.add(masa8yazi);
+        tmpMasaDurumları.add(masa9yazi);
+        tmpMasaDurumları.add(masa10yazi);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 51, 204));
         setForeground(new java.awt.Color(0, 51, 204));
@@ -685,11 +738,7 @@ public class TryFrame extends JFrame {
 
         garsonlarList.setBackground(new java.awt.Color(0, 51, 102));
         garsonlarList.setForeground(new java.awt.Color(255, 255, 255));
-        garsonlarList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        garsonlarList.setModel(tmpgarsonlarList);
         garsonlarPanel.setViewportView(garsonlarList);
 
         jLabel16.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -770,11 +819,7 @@ public class TryFrame extends JFrame {
 
         ascilarList.setBackground(new java.awt.Color(0, 51, 102));
         ascilarList.setForeground(new java.awt.Color(255, 255, 255));
-        ascilarList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        ascilarList.setModel(tmpascilarList);
         ascilarPanel.setViewportView(ascilarList);
 
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
@@ -837,11 +882,7 @@ public class TryFrame extends JFrame {
 
         kasaSirasiList.setBackground(new java.awt.Color(0, 51, 102));
         kasaSirasiList.setForeground(new java.awt.Color(255, 255, 255));
-        kasaSirasiList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        kasaSirasiList.setModel(tmphesapsirasindaBekleyenMusteriList);
         kasaSirasiPanel.setViewportView(kasaSirasiList);
 
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
@@ -981,14 +1022,12 @@ public class TryFrame extends JFrame {
                 .addContainerGap())
         );
 
-        setSize(1035, 670);
+        setSize(1100, 670);
         setVisible(true);
         setResizable(false);
     }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        //Baslangic değerlerinin girilmesi
-        restoran r = new restoran(2, 6, 3, 10,4);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         ExecutorService musteriExec = Executors.newFixedThreadPool(r.getmusteriSayi());
         ExecutorService garsonExec = Executors.newFixedThreadPool(r.getgarsonSayi());
         ExecutorService asciExec = Executors.newFixedThreadPool(r.getasciSayi());
