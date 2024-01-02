@@ -4,7 +4,8 @@ public class garson implements Runnable {
     public garson(String name,restoran r) {
         this.name = name;
         this.r = r;
-        System.out.println(name + " oluşturuldu !");
+        System.out.println(getName() + " oluşturuldu !");
+        d.yazdir(getName() + " oluşturuldu !");
     }
 
     public String getName(){
@@ -16,7 +17,7 @@ public class garson implements Runnable {
     private boolean siparisHazır = false;
     private musteri _musteri;
     private restoran r;
-    private Document d;
+    private Document d = new Document();
 
 
     public void siparisHAzır() {
@@ -30,6 +31,7 @@ public class garson implements Runnable {
     public void musteridenBosan() {
         this._musteri = null;
         System.out.println(getName() + ", yeni bir musteri icin hazir");
+        d.yazdir(getName() + ", yeni bir musteri icin hazir");
     }
 
     public musteri getMusteri() {
@@ -40,7 +42,8 @@ public class garson implements Runnable {
         try{
             Thread.sleep(2000);
             _musteri.setSiparis();
-            System.out.println(this.name + " " + this._musteri.getName() + "'in siparisini aldı" );
+            System.out.println(this.name + " " + this._musteri.getName() + "'in siparisini aldı");
+            d.yazdir(this.name + " " + this._musteri.getName() + "'in siparisini aldı");
         }
         catch(Exception e){
             
@@ -82,6 +85,7 @@ public class garson implements Runnable {
                 case 4:
                 _musteri.siparisSunum();
                 System.out.println(getName() + ", " + getMusteri().getName() + "'in siparisini servis ediyor.");
+                d.yazdir(getName() + ", " + getMusteri().getName() + "'in siparisini servis ediyor.");
                 sira++;
                 break;
 

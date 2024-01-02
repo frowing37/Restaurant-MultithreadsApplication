@@ -19,6 +19,7 @@ public class restoran {
     public ArrayList<masa> masalar = new ArrayList<masa>();
     public kasaelemani kasaElemani = new kasaelemani("KasaElemanı1",this);
 
+    Document d = new Document();
 
     public restoran(int asciSayi,int masaSayi,int garsonSayi,int musteriSayi,int oncelikliMusteriSayisi){
         this.asciSayi = asciSayi;
@@ -49,6 +50,7 @@ public class restoran {
     public synchronized void siradanCikart(musteri musteri){
        int index = this.siraListesi.indexOf(musteri);
        this.siraListesi.remove(index);
+       k.siradaBekleyenleriGuncelle(this.siraListesi);
     }
 
     public synchronized int siramNe(musteri musteri){
@@ -79,6 +81,7 @@ public class restoran {
                                 musteri.garsonAtama(garson);
                                 garson.musteriAta(musteri);
                                 System.out.println(garson.getName() + ", " + musteri.getName() + " ile ilgilenicek");
+                                d.yazdir(garson.getName() + ", " + musteri.getName() + " ile ilgilenicek");
                             }catch(Exception e) {
 
                             }
@@ -96,6 +99,7 @@ public class restoran {
             if(asci.asciUygunmu()) {
                 asci.siparisiAl(new yemek(asci,garson,asci.getRestoran()));
                 System.out.println(asci.getName() + ", " + garson.getName() + " siparisini yapmaya basladı");
+                d.yazdir(asci.getName() + ", " + garson.getName() + " siparisini yapmaya basladı");
                 return true;
             }
         }
@@ -127,6 +131,7 @@ public class restoran {
         this.restorandanCikanlar.add(musteri);
         if(restorandanCikanlar.size() == this.musteriSayi) {
             System.out.println("RESTORANDA HİÇ MÜŞTERİ KALMADI");
+            d.yazdir("RESTORANDA HİÇ MÜŞTERİ KALMADI");
         }
     }
 

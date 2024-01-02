@@ -83,6 +83,8 @@ public class TryFrame extends JFrame {
                 tempList.addElement(string);
             }
             tmpsiradaBekleyenMusteriList = tempList;
+            siradaBekleyenMusteriList.setModel(tmpsiradaBekleyenMusteriList);
+            siradaBekleyenMusteriList.repaint();
         }
 
     public void SimulasyonPenceresi() {

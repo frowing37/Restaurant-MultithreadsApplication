@@ -9,6 +9,7 @@ public class musteri implements Runnable {
         this.r = r;
         this.ID = rand.nextInt(100000,1000000);
         System.out.println(this.name + " oluşturuldu !");
+        d.yazdir(this.name + " oluşturuldu !");
     }
 
     private String name;
@@ -25,7 +26,7 @@ public class musteri implements Runnable {
     private int siraBeklemeSuresi = 0;
     private int maxsiraBeklemeSuresi = 20;
     private boolean bitti = false;
-    private Document d;
+    private Document d = new Document();
 
     public String getName(){
         return this.name;
@@ -82,6 +83,7 @@ public class musteri implements Runnable {
 
     public void restoranaGir(){
         System.out.println(getName() + " restorana girdi");
+        d.yazdir(getName() + " restorana girdi");
         r.sirayaEkle(this);
     }
 
@@ -115,7 +117,8 @@ public class musteri implements Runnable {
     public void masayaOtur(masa masa){
         this.masa = masa;
         masa.doldur(this);
-        System.out.println(name + " " + this.masa.getName() + "'e oturdu");
+        System.out.println(getName() + " " + this.masa.getName() + "'e oturdu");
+        d.yazdir(getName() + " " + this.masa.getName() + "'e oturdu");
                     
     }
 
@@ -127,7 +130,8 @@ public class musteri implements Runnable {
 
     public boolean restoraniTerket(){
         r.siradanCikart(this);
-        System.out.println(name + " restoranı terk etti");
+        System.out.println(getName() + " restoranı terk etti");
+        d.yazdir(getName() + " restoranı terk etti");
         r.RestorandanCiktimGardasim(this);
         return false;
     }
@@ -137,6 +141,7 @@ public class musteri implements Runnable {
             this.yemek = true;
             Thread.sleep(2000);
             System.out.println(getName() + " yemeğini yedi");
+            d.yazdir(getName() + " yemeğini yedi");
             r.hesapSirasinaGir(this);
         }
         catch(Exception e){

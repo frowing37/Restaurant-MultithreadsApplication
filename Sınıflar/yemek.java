@@ -4,6 +4,7 @@ public class yemek implements Runnable {
     private garson g;
     private boolean aktiflik = true;
     private restoran r;
+    private Document d = new Document();
 
     public yemek(asci a,garson g, restoran r) {
         this.a = a;
@@ -40,6 +41,7 @@ public class yemek implements Runnable {
                  r.siparisiListedenCikart(this);
                  this.aktiflik = false;
                  System.out.println(getAsci().getName() + ", " + getGarson().getName()  +"'un yemegini pisirdi");
+                 d.yazdir(getAsci().getName() + ", " + getGarson().getName()  +"'un yemegini pisirdi");
                  getGarson().siparisHAzır();
             } else {
                 r.siparisiListedenCikart(this);

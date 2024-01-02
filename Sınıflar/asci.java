@@ -8,13 +8,14 @@ public class asci implements Runnable {
     private ArrayList<yemek> yemekler = new ArrayList<yemek>();
     private int yapilanAktifYemek = 0;
     ExecutorService yemekExec = Executors.newFixedThreadPool(2);
-    private Document d;
+    private Document d = new Document();
     private restoran r;
 
     public asci(String name, restoran r) {
         this.name = name;
         this.r = r;
-        System.out.println(name + " oluşturuldu !");
+        System.out.println(getName() + " oluşturuldu !");
+        d.yazdir(getName() + " oluşturuldu !");
     }
 
     public String getName() {
