@@ -6,9 +6,7 @@ public class Main2 {
         TryFrame pencere = new TryFrame();
         SwingUtilities.invokeLater(() -> {
             pencere.SimulasyonPenceresi();
+            
         } );
-
-        while(true) {
-        }
     }
 }

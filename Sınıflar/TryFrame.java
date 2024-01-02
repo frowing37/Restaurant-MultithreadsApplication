@@ -5,7 +5,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
@@ -67,7 +66,9 @@ public class TryFrame extends JFrame {
         JLabel jLabel17 = new JLabel();
         JLabel jLabel18 = new JLabel();
         JLabel jLabel19 = new JLabel();
+        JFrame main = new JFrame();
         private static JList<String> siradaBekleyenMusteriList = new JList<String>();
+        private static DefaultListModel<String> tmpsiradaBekleyenMusteriList = new DefaultListModel<String>();        
         private static JList<String> garsonlarList = new JList<String>();
         private static JList<String> ascilarList = new JList<String>();
         private static JList<String> kasaSirasiList = new JList<String>();
@@ -77,15 +78,11 @@ public class TryFrame extends JFrame {
         private static JScrollPane kasaSirasiPanel = new JScrollPane();
 
     public void siradaBekleyenleriGuncelle(ArrayList<String> list) {
-
             DefaultListModel<String> tempList = new DefaultListModel<String>();
             for (String string : list) {
                 tempList.addElement(string);
             }
-
-            JList<String> newSiraList = new JList<>(tempList);
-
-            this.siradaBekleyenMusteriList = newSiraList;
+            tmpsiradaBekleyenMusteriList = tempList;
         }
 
     public void SimulasyonPenceresi() {
@@ -101,18 +98,19 @@ public class TryFrame extends JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 204));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Sırada Bekleyen Müşteriler");
-
+        
         siradaBekleyenMusteriList.setBackground(new java.awt.Color(0, 51, 102));
-        siradaBekleyenMusteriList.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        siradaBekleyenMusteriList.setFont(new java.awt.Font("Helvetica Neue", 1, 13));
         siradaBekleyenMusteriList.setForeground(new java.awt.Color(255, 255, 255));
-        siradaBekleyenMusteriList.setModel(new javax.swing.AbstractListModel<String>() {
+        siradaBekleyenMusteriList.setModel(tmpsiradaBekleyenMusteriList);
+        /*siradaBekleyenMusteriList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
-        });
+        });*/
         siradaBekleyenMusteriPanel.setViewportView(siradaBekleyenMusteriList);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -920,8 +918,8 @@ public class TryFrame extends JFrame {
         jPanel35.setBackground(new java.awt.Color(0, 153, 255));
 
         jButton1.setBackground(new java.awt.Color(0, 102, 51));
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 13));
+        jButton1.setForeground(new java.awt.Color(1, 117, 3));
         jButton1.setText("Simülasyonu Başlat");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -930,8 +928,8 @@ public class TryFrame extends JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(255, 0, 0));
-        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 13));
+        jButton2.setForeground(new java.awt.Color(117, 11, 1));
         jButton2.setText("Sonlandır");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -980,6 +978,7 @@ public class TryFrame extends JFrame {
                 .addComponent(jPanel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
         setSize(1035, 670);
         setVisible(true);
         setResizable(false);

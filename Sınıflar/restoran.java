@@ -9,8 +9,8 @@ public class restoran {
     private int musteriSayi;
     private int oncelikliMusteriSayisi;
     private kompakt k = new kompakt();
-    private volatile ArrayList<musteri> siraListesi = new ArrayList<musteri>();
-    private volatile ArrayList<musteri> hesapSirasi = new ArrayList<musteri>();
+    private ArrayList<musteri> siraListesi = new ArrayList<musteri>();
+    private ArrayList<musteri> hesapSirasi = new ArrayList<musteri>();
     private ArrayList<musteri> restorandanCikanlar = new ArrayList<musteri>();
 
     public ArrayList<musteri> musteriler = new ArrayList<musteri>();
@@ -43,7 +43,7 @@ public class restoran {
     public synchronized void sirayaEkle(musteri musteri){
         this.siraListesi.add(musteri);
         sirayiDüzelt();
-        k.siradaBekleyenleriGuncelle(siraListesi);
+        k.siradaBekleyenleriGuncelle(this.siraListesi);
     }
 
     public synchronized void siradanCikart(musteri musteri){
