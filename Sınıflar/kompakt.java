@@ -9,7 +9,7 @@ public class kompakt {
     public synchronized void siradaBekleyenleriGuncelle(ArrayList<musteri> siradaBekleyenler) {
         ArrayList<String> siradaBekleyenlerIsimListesi = new ArrayList<String>();
         for (musteri musteri : siradaBekleyenler) {
-            siradaBekleyenlerIsimListesi.add(musteri.getName());
+            siradaBekleyenlerIsimListesi.add(" - " + musteri.getName());
         }
         t.siradaBekleyenleriGuncelle(siradaBekleyenlerIsimListesi);
     }
@@ -18,9 +18,9 @@ public class kompakt {
         ArrayList<String> garsonlarIsimListesi = new ArrayList<String>();
         for (garson g : garsonlar) {
             if(g.getMusteri() != null) {
-                garsonlarIsimListesi.add(" - " + g.getName() + " " + g.getMusteri().getName());
+                garsonlarIsimListesi.add(" - " + g.getName() + "     " + g.getMusteri().getName());
             } else {
-                garsonlarIsimListesi.add(" - " + g.getName() + " Boş");
+                garsonlarIsimListesi.add(" - " + g.getName() + "     Boşta");
             }
         }
         t.garsonlariGuncelle(garsonlarIsimListesi);
@@ -30,9 +30,9 @@ public class kompakt {
         ArrayList<String> ascilarIsimListesi = new ArrayList<String>();
         for (asci a : ascilar) {
             if(a.SiparisListesi().size() == 2) {
-                ascilarIsimListesi.add(" - " + a.getName() + "  " + a.SiparisListesi().get(0).getGarson().getName() + " " + a.SiparisListesi().get(1).getGarson().getName());
+                ascilarIsimListesi.add(" - " + a.getName() + "    " + a.SiparisListesi().get(0).getGarson().getName() + " / " + a.SiparisListesi().get(1).getGarson().getName());
             } else if(a.SiparisListesi().size() == 1) {
-                ascilarIsimListesi.add(" - " + a.getName() + a.SiparisListesi().get(0).getGarson().getName());
+                ascilarIsimListesi.add(" - " + a.getName() + "    "  + a.SiparisListesi().get(0).getGarson().getName());
             } else {
                 ascilarIsimListesi.add(" - " + a.getName() + " Boşta");
             }
@@ -55,7 +55,7 @@ public class kompakt {
     public synchronized void kasaSirasiniGuncelle(ArrayList<musteri> kasaSirasi) {
         ArrayList<String> kasasiraIsimListesi = new ArrayList<String>();
         for (musteri m : kasaSirasi) {
-            kasasiraIsimListesi.add(m.getName());            
+            kasasiraIsimListesi.add( " - " + m.getName());            
         }
         t.kasaSirasiGuncelle(kasasiraIsimListesi);
     }

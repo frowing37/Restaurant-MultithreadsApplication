@@ -19,7 +19,6 @@ public class Main2 {
                     k.garsonlariGuncelle(r.getGarsonListesi());
                     k.kasaSirasiniGuncelle(r.getHesapSiraListesi());
                     k.masalariGuncelle(r.getMasaListesi());
-                    //Thread.sleep(125);
                 } catch(Exception e) {
 
                 }
